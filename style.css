@@ -1051,3 +1051,349 @@ body.is-loaded .reveal {
   }
   *::-webkit-scrollbar-thumb:hover { background: rgba(200,169,110,0.35); background-clip: padding-box; }
 }
+
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s;
+  }
+
+  .cursor-dot {
+    width: 5px; height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    transition: transform 0.12s var(--ease-out), opacity 0.4s, background 0.3s;
+  }
+
+  .cursor-ring {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(200,169,110,0.55);
+    border-radius: 50%;
+    transition: transform 0.22s var(--ease-luxury), opacity 0.4s,
+                width 0.45s var(--ease-luxury), height 0.45s var(--ease-luxury),
+                border-color 0.35s;
+  }
+
+  body:has(a:hover) .cursor-ring,
+  body:has(button:hover) .cursor-ring {
+    width: 52px; height: 52px;
+    border-color: rgba(200,169,110,0.9);
+  }
+
+  body:has(a:hover) .cursor-dot,
+  body:has(button:hover) .cursor-dot {
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  body.cursor-hidden .cursor-dot,
+  body.cursor-hidden .cursor-ring { opacity: 0; }
+}
+
+/* ============================================================
+   HERO PARALLAX WRAPPER
+   ============================================================ */
+.hero__bg {
+  will-change: transform;
+}
+
+/* ============================================================
+   HERO LIGHT RAYS
+   ============================================================ */
+.hero__rays {
+  position: absolute;
+  inset: 0; z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero__rays::before,
+.hero__rays::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  width: 1px;
+  height: 140%;
+  background: linear-gradient(180deg, rgba(200,169,110,0.18) 0%, transparent 70%);
+  animation: rayDrift 14s ease-in-out infinite alternate;
+  transform-origin: top center;
+  filter: blur(8px);
+}
+.hero__rays::before {
+  left: 38%;
+  transform: rotate(-8deg);
+  animation-delay: 0s;
+}
+.hero__rays::after {
+  left: 58%;
+  transform: rotate(6deg);
+  animation-delay: -6s;
+  opacity: 0.65;
+}
+@keyframes rayDrift {
+  from { transform: rotate(-8deg) scaleX(1);   opacity: 0.7; }
+  to   { transform: rotate(-2deg) scaleX(1.5); opacity: 1;   }
+}
+
+/* ============================================================
+   SILENT SECTION (typography only — no images)
+   ============================================================ */
+.section--silent {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52vh;
+  text-align: center;
+  background: radial-gradient(ellipse 70% 55% at 50% 50%,
+    rgba(200,169,110,0.04) 0%, transparent 65%);
+}
+.silent-block {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+.silent-block__quote {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw + 1rem, 3.25rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+.silent-block__attr {
+  font-size: 0.6rem;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ============================================================
+   OUTRO / ENDING EXPERIENCE
+   ============================================================ */
+.section--outro {
+  position: relative;
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+  border-top: 1px solid var(--line);
+}
+.outro__bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url("https://images.unsplash.com/photo-1448375240586-882f05218d64?w=1600&q=88");
+  background-size: cover;
+  background-position: center 60%;
+  filter: brightness(0.28) saturate(0.6);
+  transform: scale(1.04);
+  transition: transform 1.6s var(--ease-luxury), filter 1.6s var(--ease-luxury);
+}
+.section--outro.is-visible .outro__bg {
+  transform: scale(1);
+  filter: brightness(0.32) saturate(0.8);
+}
+.outro__overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg,
+    rgba(8,8,6,0.55) 0%,
+    rgba(8,8,6,0.2)  45%,
+    rgba(8,8,6,0.8)  100%);
+}
+.outro__inner {
+  position: relative; z-index: 2;
+  padding: 4rem clamp(1.5rem,5vw,2rem);
+}
+.outro__tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw + 0.8rem, 3rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--cream);
+  margin-bottom: 0.65rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s var(--ease-luxury) 0.3s, transform 1s var(--ease-luxury) 0.3s;
+}
+.outro__sub {
+  font-size: clamp(0.82rem, 0.78rem + 0.25vw, 0.95rem);
+  letter-spacing: 0.12em;
+  color: rgba(242,237,227,0.55);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.9s var(--ease-luxury) 0.55s, transform 0.9s var(--ease-luxury) 0.55s;
+}
+.outro__action {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s var(--ease-luxury) 0.8s, transform 0.8s var(--ease-luxury) 0.8s;
+}
+.section--outro.is-visible .outro__tagline,
+.section--outro.is-visible .outro__sub,
+.section--outro.is-visible .outro__action {
+  opacity: 1;
+  transform: none;
+}
+
+/* Gold rule decorative element reusable */
+.gold-rule {
+  display: block;
+  width: clamp(2.5rem, 5vw, 4rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 2rem;
+  opacity: 0.6;
+}
+
+/* ============================================================
+   ATMOSPHERIC DUST PARTICLES
+   ============================================================ */
+.hero__dust {
+  position: absolute; inset: 0; z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.dust-particle {
+  position: absolute;
+  width: 2px; height: 2px;
+  border-radius: 50%;
+  background: rgba(200,169,110,0.55);
+  animation: dustFloat linear infinite;
+  filter: blur(0.5px);
+}
+@keyframes dustFloat {
+  0%   { transform: translateY(100vh) translateX(0)    scale(0);   opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-10vh)  translateX(40px) scale(1.5); opacity: 0; }
+}
+
+/* ============================================================
+   BROKEN GRID / ASYMMETRY — story section
+   ============================================================ */
+@media (min-width: 900px) {
+  .story-split__media {
+    transform: translateY(2.5rem);
+    transition: transform 1.4s var(--ease-luxury);
+  }
+  .story-split__media.is-visible {
+    transform: translateY(0);
+  }
+  .story-split__content {
+    padding-bottom: 3rem;
+  }
+}
+
+/* ============================================================
+   DRAMATIC SECTION TRANSITION — dark band
+   ============================================================ */
+.section--dark-band {
+  background: #040402;
+  padding: clamp(3rem, 8vw, 5rem) clamp(1rem,5vw,1.5rem);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.dark-band-inner {
+  max-width: 48rem;
+  margin-inline: auto;
+  display: grid;
+  gap: clamp(2rem,4vw,3.5rem);
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .dark-band-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.dark-band__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.5vw + 0.8rem, 2.5rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: var(--cream);
+}
+.dark-band__heading em {
+  font-style: italic;
+  color: var(--gold);
+}
+.dark-band__body {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: rgba(242,237,227,0.5);
+}
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 1px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-bright));
+  z-index: 200;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* ============================================================
+   SECTION NUMBER LABELS (editorial feel)
+   ============================================================ */
+.section-num {
+  font-size: 0.55rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(200,169,110,0.45);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* ============================================================
+   PRODUCT CARD — subtle number badge
+   ============================================================ */
+.product-card {
+  position: relative;
+}
+
+/* ============================================================
+   HOVER GOLD UNDERLINE for nav links
+   ============================================================ */
+.menu-overlay__nav a {
+  display: inline-block;
+}
+
+/* ============================================================
+   MOBILE REFINEMENTS
+   ============================================================ */
+@media (max-width: 640px) {
+  .hero__title {
+    font-size: clamp(2.4rem, 9vw, 3rem);
+    letter-spacing: 0.02em;
+  }
+  .hero__eyebrow { letter-spacing: 0.28em; }
+  .btn { min-height: 3rem; padding: 0 1.75rem; }
+  .filter-btn { padding: 0.55rem 1rem; }
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print {
+  .site-header, .menu-overlay, .hero__scroll-hint,
+  .cursor-dot, .cursor-ring, .scroll-progress { display: none; }
+  body { background: white; color: black; }
+}
