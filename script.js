@@ -1,318 +1,393 @@
-/* ============================================================
-   VANYRA — script.js v3
-   Custom cursor · Parallax · Dust particles · Scroll progress
-   Collection filter · Product page · Contact form
-   ============================================================ */
-
 (function () {
   "use strict";
 
-  /* ----------------------------------------------------------
-     PRODUCT DATA
-     ---------------------------------------------------------- */
-  const PRODUCTS = {
+  var TRANSITION_MS = 720;
+
+  var PRODUCTS = {
     "forest-bowl": {
-      name:     "Forest Bowl",
-      price:    "₹4,800",
-      ship:     "Ready to Ship — dispatched within 3 business days.",
-      image:    "https://images.unsplash.com/photo-1610701596007-11502849e13f?w=1000&q=90",
-      story:    "<p>A shallow curve that catches morning light. Hand-turned from a single piece of teak sourced from the Dang forest reserve, each bowl holds the grain of its origin.</p><p>No two bowls are identical — the wood decides.</p>",
-      delivery: "Shipped in linen wrap. Natural oils only. Avoid prolonged water contact.",
+      name: "Forest Bowl",
+      price: "₹4,800",
+      ship: "Ready to ship within 5–7 days.",
+      image: "https://images.unsplash.com/photo-1610701596007-11502849e13f?w=1400&q=88",
+      imageAlt: "Hand-turned wooden bowl on a dark surface",
+      story: [
+        "You notice it first in still mornings — how the rim catches a thin line of light, like water paused at the edge of a leaf.",
+        "Turned slowly from dense forest wood, this bowl is not loud craft. It is a quiet invitation: fruit, incense, or nothing at all.",
+      ],
+      delivery:
+        "Ships wrapped in cloth and paper. Pan-India courier. International on request — we reply with timing and care notes.",
     },
     "bamboo-tray": {
-      name:     "Bamboo Tray",
-      price:    "₹3,200",
-      ship:     "Made to Order — allow 10–14 days.",
-      image:    "https://images.unsplash.com/photo-1600585152220-90363fe27e38?w=1000&q=90",
-      story:    "<p>For objects you want to see, not store away. Woven bamboo base, hardwood frame — a quiet surface for daily rituals.</p>",
-      delivery: "Wipe with a dry cloth. Avoid direct sunlight for extended periods.",
+      name: "Bamboo Tray",
+      price: "₹3,200",
+      ship: "Made to order — allow 3–4 weeks.",
+      image: "https://images.unsplash.com/photo-1600585152220-90363fe27e38?w=1400&q=88",
+      imageAlt: "Minimal wooden tray",
+      story: [
+        "Bamboo asks for patience. We follow its fibers instead of forcing symmetry — so each tray carries a slightly different song.",
+        "Use it where you want calm: keys, tea, a single book. It frames the ordinary until the ordinary feels considered.",
+      ],
+      delivery:
+        "Each tray is oiled by hand before dispatch. Lead time confirmed after order. Pickup available from our Dang studio.",
     },
     "river-spoon": {
-      name:     "River Spoon Set",
-      price:    "₹2,400",
-      ship:     "Ready to Ship — dispatched within 3 business days.",
-      image:    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=90",
-      story:    "<p>Cool to the touch — shaped for daily ceremony. Each spoon in the set is carved individually, following the grain rather than against it.</p>",
-      delivery: "Hand wash only. Rub with coconut oil monthly to preserve finish.",
+      name: "River Spoon Set",
+      price: "₹2,400",
+      ship: "Ready to ship within 5–7 days.",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=88",
+      imageAlt: "Hand-carved wooden spoons",
+      story: [
+        "Cool weight in the hand, edges softened by hours of sanding. These spoons belong to slow kitchens and unhurried meals.",
+        "A set of three — similar in spirit, unique in grain. Meant to be used, washed, and set down with the same care you give the table.",
+      ],
+      delivery:
+        "Nested in a slim paper sleeve, then boxed. Gift notes available — leave a line in your message to us.",
     },
     "dusk-vessel": {
-      name:     "Dusk Vessel",
-      price:    "₹6,200",
-      ship:     "Made to Order — allow 14–21 days.",
-      image:    "https://images.unsplash.com/photo-1615876234884-f3139a52330b?w=1000&q=90",
-      story:    "<p>Tall silence — for stems or standing alone. Turned on a slow lathe over two days, the vessel's proportions are resolved entirely by feel.</p>",
-      delivery: "Interior sealed. Suitable for dried stems. Not waterproof.",
+      name: "Dusk Vessel",
+      price: "₹6,200",
+      ship: "Made to order — allow 4–5 weeks.",
+      image: "https://images.unsplash.com/photo-1615876234884-f3139a52330b?w=1400&q=88",
+      imageAlt: "Tall wooden vessel",
+      story: [
+        "Height changes a room — this piece draws the eye upward without shouting. We leave the exterior almost untouched; the story is in the silhouette.",
+        "For dried stems, a single branch, or standing empty beside a window where the light goes amber before night.",
+      ],
+      delivery:
+        "Crated for safe travel. We photograph your piece before it leaves so you can anticipate its arrival.",
     },
     "monsoon-board": {
-      name:     "Monsoon Board",
-      price:    "₹5,400",
-      ship:     "Ready to Ship — dispatched within 3 business days.",
-      image:    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1000&q=90",
-      story:    "<p>Generous grain — meant to be shared. The board is cut from a single slab, allowing the natural edge to define one side.</p>",
-      delivery: "Oil with food-safe mineral oil before first use. Hand wash only.",
+      name: "Monsoon Board",
+      price: "₹5,400",
+      ship: "Ready to ship within 7–10 days.",
+      image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1400&q=88",
+      imageAlt: "Large wooden serving board",
+      story: [
+        "Wide enough for bread, fruit, and hands reaching at once. Grain chosen for depth — you will find new lines each time you look.",
+        "Oiled for food contact, sanded until the surface feels honest under the fingertips.",
+      ],
+      delivery:
+        "Heavy parcel — tracked shipping. Care card included for washing and re-oiling over the years.",
     },
     "amber-box": {
-      name:     "Amber Keepsake Box",
-      price:    "₹3,900",
-      ship:     "Made to Order — allow 10–14 days.",
-      image:    "https://images.unsplash.com/photo-1611485988300-b7530defb8e2?w=1000&q=90",
-      story:    "<p>A quiet lid — for letters and small treasures. Dovetail joints, no glue. The fit tightens with humidity, loosens in dry air — the wood breathes.</p>",
-      delivery: "Do not store in direct heat. Interior unfinished — the wood scent is intentional.",
+      name: "Amber Keepsake Box",
+      price: "₹3,900",
+      ship: "Made to order — allow 3 weeks.",
+      image: "https://images.unsplash.com/photo-1611485988300-b7530defb8e2?w=1400&q=88",
+      imageAlt: "Wooden keepsake box",
+      story: [
+        "A small lid should close with intention — not a snap, but a soft certainty. Inside, space for what you do not want lost to noise.",
+        "Warm interior tone; exterior left matte so fingerprints become part of its life, not flaws.",
+      ],
+      delivery:
+        "Ships in a fitted box. Monogramming on request (add a note when you write to us).",
     },
   };
 
-  /* ----------------------------------------------------------
-     PAGE LOAD
-     ---------------------------------------------------------- */
-  window.addEventListener("load", () => {
-    document.body.classList.add("is-loaded");
-  });
-
-  /* ----------------------------------------------------------
-     SCROLL PROGRESS BAR
-     ---------------------------------------------------------- */
-  const progressBar = document.querySelector(".scroll-progress");
-  function updateProgress() {
-    if (!progressBar) return;
-    const pct = document.documentElement.scrollHeight - window.innerHeight;
-    progressBar.style.width = pct > 0
-      ? (window.scrollY / pct * 100) + "%"
-      : "0%";
-  }
-
-  /* ----------------------------------------------------------
-     HEADER scroll state
-     ---------------------------------------------------------- */
-  const header = document.getElementById("site-header");
-  function updateHeader() {
-    if (header) header.classList.toggle("is-scrolled", window.scrollY > 48);
-  }
-
-  /* ----------------------------------------------------------
-     PARALLAX HERO
-     ---------------------------------------------------------- */
-  const heroBg = document.querySelector(".hero__bg");
-  function updateParallax() {
-    if (!heroBg || window.scrollY >= window.innerHeight) return;
-    heroBg.style.transform = `translateY(${window.scrollY * 0.28}px) scale(1.06)`;
-  }
-
-  /* combined scroll */
-  window.addEventListener("scroll", () => {
-    updateProgress();
-    updateHeader();
-    updateParallax();
-  }, { passive: true });
-  updateProgress();
-  updateHeader();
-
-  /* ----------------------------------------------------------
-     CUSTOM CURSOR
-     ---------------------------------------------------------- */
-  if (window.matchMedia("(pointer: fine)").matches) {
-    const dot  = Object.assign(document.createElement("div"), { className: "cursor-dot"  });
-    const ring = Object.assign(document.createElement("div"), { className: "cursor-ring" });
-    document.body.append(dot, ring);
-
-    let mx = -100, my = -100, rx = -100, ry = -100;
-
-    document.addEventListener("mousemove", (e) => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.left = mx + "px";
-      dot.style.top  = my + "px";
-    });
-
-    (function tick() {
-      rx += (mx - rx) * 0.14;
-      ry += (my - ry) * 0.14;
-      ring.style.left = rx + "px";
-      ring.style.top  = ry + "px";
-      requestAnimationFrame(tick);
-    })();
-
-    document.addEventListener("mouseleave", () => document.body.classList.add("cursor-hidden"));
-    document.addEventListener("mouseenter", () => document.body.classList.remove("cursor-hidden"));
-  }
-
-  /* ----------------------------------------------------------
-     MENU TOGGLE
-     ---------------------------------------------------------- */
-  const menuToggle  = document.querySelector(".menu-toggle");
-  const menuOverlay = document.getElementById("site-menu");
-
-  if (menuToggle && menuOverlay) {
-    const isOpen  = () => menuToggle.getAttribute("aria-expanded") === "true";
-    const open    = () => {
-      menuOverlay.hidden = false;
-      menuToggle.setAttribute("aria-expanded", "true");
-      document.body.style.overflow = "hidden";
-      const first = menuOverlay.querySelector("a");
-      if (first) setTimeout(() => first.focus(), 60);
-    };
-    const close   = () => {
-      menuOverlay.hidden = true;
-      menuToggle.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
-    };
-    menuToggle.addEventListener("click", () => isOpen() ? close() : open());
-    menuOverlay.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
-    document.addEventListener("keydown", e => { if (e.key === "Escape" && isOpen()) { close(); menuToggle.focus(); } });
-  }
-
-  /* ----------------------------------------------------------
-     DUST PARTICLES
-     ---------------------------------------------------------- */
-  const dustWrap = document.querySelector(".hero__dust");
-  if (dustWrap) {
-    for (let i = 0; i < 20; i++) {
-      const p = document.createElement("div");
-      p.className = "dust-particle";
-      const size = Math.random() * 2 + 1;
-      p.style.cssText = `
-        left:${Math.random()*100}%;
-        width:${size}px; height:${size}px;
-        animation-duration:${Math.random()*18+12}s;
-        animation-delay:${Math.random()*-24}s;
-        opacity:${Math.random()*0.5+0.15};
-      `;
-      dustWrap.appendChild(p);
+  function onReady(fn) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fn);
+    } else {
+      fn();
     }
   }
 
-  /* ----------------------------------------------------------
-     INTERSECTION OBSERVER — reveal + outro + story
-     ---------------------------------------------------------- */
-  if ("IntersectionObserver" in window) {
-    // General reveal
-    new IntersectionObserver(
-      (entries, obs) => entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add("is-visible"); obs.unobserve(e.target); }
-      }),
-      { threshold: 0.1, rootMargin: "0px 0px -48px 0px" }
-    ).observe && document.querySelectorAll(".reveal").forEach(el =>
-      new IntersectionObserver(
-        ([e], obs) => { if (e.isIntersecting) { el.classList.add("is-visible"); obs.unobserve(el); } },
-        { threshold: 0.1, rootMargin: "0px 0px -48px 0px" }
-      ).observe(el)
-    );
-
-    // Outro
-    const outro = document.querySelector(".section--outro");
-    if (outro) new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) outro.classList.add("is-visible"); },
-      { threshold: 0.22 }
-    ).observe(outro);
-
-    // Story asymmetric shift
-    const storyMedia = document.querySelector(".story-split__media");
-    if (storyMedia) new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) storyMedia.classList.add("is-visible"); },
-      { threshold: 0.2 }
-    ).observe(storyMedia);
-
-  } else {
-    document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
-    const outro = document.querySelector(".section--outro");
-    if (outro) outro.classList.add("is-visible");
+  function isInternalPageLink(anchor) {
+    var href = anchor.getAttribute("href");
+    if (!href || href.charAt(0) === "#") return false;
+    if (href.indexOf("mailto:") === 0) return false;
+    if (anchor.getAttribute("target") === "_blank") return false;
+    if (/^https?:\/\//i.test(href)) {
+      try {
+        var u = new URL(href, window.location.href);
+        return u.origin === window.location.origin;
+      } catch (e) {
+        return false;
+      }
+    }
+    return /\.html(\?|#|$)/.test(href);
   }
 
-  /* ----------------------------------------------------------
-     PAGE TRANSITION
-     ---------------------------------------------------------- */
-  document.querySelectorAll("a[href]").forEach(link => {
-    const href = link.getAttribute("href");
-    if (!href || href.startsWith("#") || href.startsWith("mailto") || href.startsWith("http")) return;
-    link.addEventListener("click", e => {
+  function navigateWithTransition(url) {
+    document.body.classList.add("is-page-exit");
+    window.setTimeout(function () {
+      window.location.href = url;
+    }, TRANSITION_MS);
+  }
+
+  function initPageTransitions() {
+    document.addEventListener("click", function (e) {
+      var anchor = e.target.closest && e.target.closest("a");
+      if (!anchor || !isInternalPageLink(anchor)) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (anchor.getAttribute("download")) return;
+      var href = anchor.getAttribute("href");
+      var url = new URL(href, window.location.href);
+      if (url.pathname === window.location.pathname && url.search === window.location.search) return;
+
       e.preventDefault();
-      document.body.classList.add("is-page-exit");
-      setTimeout(() => { window.location.href = href; }, 360);
+      navigateWithTransition(anchor.href);
     });
-  });
+  }
 
-  /* ----------------------------------------------------------
-     COLLECTION FILTER
-     ---------------------------------------------------------- */
-  const filterBtns      = document.querySelectorAll(".filter-btn");
-  const collectionItems = document.querySelectorAll(".collection-item");
+  function initMenu() {
+    var toggle = document.querySelector(".menu-toggle");
+    var menu = document.getElementById("site-menu");
+    if (!toggle || !menu) return;
 
-  if (filterBtns.length && collectionItems.length) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterBtns.forEach(b => b.classList.remove("is-active"));
-        btn.classList.add("is-active");
-        const filter = btn.dataset.filter;
-        let vi = 0;
-        collectionItems.forEach(item => {
-          const show = filter === "all"
-            || item.dataset.ship === filter
-            || item.dataset.cat  === filter;
-          if (show) {
-            item.classList.remove("is-hidden");
-            item.style.transitionDelay = `${vi++ * 0.07}s`;
-          } else {
-            item.classList.add("is-hidden");
-            item.style.transitionDelay = "0s";
+    function setOpen(open) {
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        menu.removeAttribute("hidden");
+        document.body.style.overflow = "hidden";
+      } else {
+        menu.setAttribute("hidden", "");
+        document.body.style.overflow = "";
+      }
+    }
+
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+      setOpen(!open);
+    });
+
+    menu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        setOpen(false);
+      });
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
+  }
+
+  function initReveal() {
+    var els = document.querySelectorAll(".reveal");
+    if (!els.length || !("IntersectionObserver" in window)) {
+      els.forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+      return;
+    }
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
           }
         });
+      },
+      { root: null, rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+    );
+    els.forEach(function (el) {
+      io.observe(el);
+    });
+  }
+
+  function initCollectionFilters() {
+    var grid = document.getElementById("collection-grid");
+    if (!grid) return;
+
+    var buttons = document.querySelectorAll(".filter-btn");
+    var items = grid.querySelectorAll(".collection-item");
+
+    function applyFilter(key) {
+      items.forEach(function (item) {
+        var ship = item.getAttribute("data-ship");
+        var cat = item.getAttribute("data-cat");
+        var show = true;
+        if (key === "all") {
+          show = true;
+        } else if (key === "ready") {
+          show = ship === "ready";
+        } else if (key === "order") {
+          show = ship === "order";
+        } else if (key === "serve" || key === "dwell" || key === "ritual") {
+          show = cat === key;
+        }
+        item.classList.toggle("is-hidden", !show);
+      });
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        buttons.forEach(function (b) {
+          b.classList.remove("is-active");
+        });
+        btn.classList.add("is-active");
+        applyFilter(btn.getAttribute("data-filter") || "all");
       });
     });
   }
 
-  /* ----------------------------------------------------------
-     PRODUCT PAGE
-     ---------------------------------------------------------- */
-  const productRoot    = document.getElementById("product-root");
-  const productMissing = document.getElementById("product-missing");
+  function getQueryParam(name) {
+    var params = new URLSearchParams(window.location.search);
+    return params.get(name);
+  }
 
-  if (productRoot) {
-    const key  = new URLSearchParams(window.location.search).get("p") || "";
-    const data = PRODUCTS[key];
-    const $    = id => document.getElementById(id);
+  function initProductPage() {
+    var root = document.getElementById("product-root");
+    if (!root) return;
 
-    if (data) {
-      const img = $("product-image");
-      if (img) { img.src = data.image; img.alt = data.name; }
-      if ($("product-name"))     $("product-name").textContent     = data.name;
-      if ($("product-price"))    $("product-price").textContent    = data.price;
-      if ($("product-ship"))     $("product-ship").textContent     = data.ship;
-      if ($("product-story"))    $("product-story").innerHTML      = data.story;
-      if ($("product-delivery")) $("product-delivery").textContent = data.delivery;
-      if ($("product-bc-name"))  $("product-bc-name").textContent  = data.name;
-      document.title = `${data.name} — VANYRA`;
-      if (img) {
-        img.onload = () => productRoot.classList.add("is-ready");
-        if (img.complete) productRoot.classList.add("is-ready");
+    var id = getQueryParam("p");
+    var data = id && PRODUCTS[id];
+    var missing = document.getElementById("product-missing");
+    var img = document.getElementById("product-image");
+    var nameEl = document.getElementById("product-name");
+    var priceEl = document.getElementById("product-price");
+    var shipEl = document.getElementById("product-ship");
+    var storyEl = document.getElementById("product-story");
+    var deliveryEl = document.getElementById("product-delivery");
+    var bc = document.getElementById("product-bc-name");
+    var buy = document.getElementById("product-buy");
+
+    if (!data) {
+      root.setAttribute("hidden", "");
+      if (missing) missing.removeAttribute("hidden");
+      document.title = "Not found — VANYRA";
+      return;
+    }
+
+    document.title = data.name + " — VANYRA";
+    if (img) {
+      img.onload = function () {
+        root.classList.add("is-ready");
+      };
+      img.onerror = function () {
+        root.classList.add("is-ready");
+      };
+      img.src = data.image;
+      img.alt = data.imageAlt;
+      if (img.complete) {
+        root.classList.add("is-ready");
       }
-      const buyBtn = $("product-buy");
-      if (buyBtn) buyBtn.addEventListener("click", () => {
-        buyBtn.textContent = "Request sent ✓";
-        buyBtn.disabled = true;
-      });
     } else {
-      productRoot.hidden = true;
-      if (productMissing) productMissing.hidden = false;
+      root.classList.add("is-ready");
+    }
+    if (nameEl) nameEl.textContent = data.name;
+    if (priceEl) priceEl.textContent = data.price;
+    if (shipEl) shipEl.textContent = data.ship;
+    if (bc) bc.textContent = data.name;
+    if (deliveryEl) deliveryEl.textContent = data.delivery;
+
+    if (storyEl) {
+      storyEl.innerHTML = "";
+      data.story.forEach(function (para) {
+        var p = document.createElement("p");
+        p.textContent = para;
+        storyEl.appendChild(p);
+      });
+    }
+
+    if (buy) {
+      buy.addEventListener("click", function () {
+        var subject = encodeURIComponent("Purchase inquiry: " + data.name);
+        var body = encodeURIComponent(
+          "Hello VANYRA,\n\nI would like to inquire about: " +
+            data.name +
+            " (" +
+            data.price +
+            ").\n\n"
+        );
+        window.location.href = "mailto:hello@vanyra.com?subject=" + subject + "&body=" + body;
+      });
     }
   }
 
-  /* ----------------------------------------------------------
-     CONTACT FORM
-     ---------------------------------------------------------- */
-  const form       = document.getElementById("contact-form");
-  const formStatus = document.getElementById("form-status");
-  if (form) {
-    form.addEventListener("submit", e => {
+  function initContactForm() {
+    var form = document.getElementById("contact-form");
+    var status = document.getElementById("form-status");
+    if (!form || !status) return;
+
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
-      const btn = form.querySelector('[type="submit"]');
-      if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
-      setTimeout(() => {
-        if (formStatus) {
-          formStatus.textContent = "Message received. We will reply within two business days.";
-          formStatus.style.color = "var(--gold)";
-        }
-        form.reset();
-        if (btn) { btn.disabled = false; btn.textContent = "Send message"; }
-      }, 1200);
+      var fd = new FormData(form);
+      var name = (fd.get("name") || "").toString().trim();
+      var email = (fd.get("email") || "").toString().trim();
+      var message = (fd.get("message") || "").toString().trim();
+
+      if (!name || !email || !message) {
+        status.textContent = "Please fill in all fields.";
+        return;
+      }
+
+      var subject = encodeURIComponent("VANYRA — message from " + name);
+      var body = encodeURIComponent(message + "\n\n—\n" + name + "\n" + email);
+      status.textContent = "Opening your email app…";
+      window.location.href = "mailto:hello@vanyra.com?subject=" + subject + "&body=" + body;
     });
   }
 
+  function markLoaded() {
+    requestAnimationFrame(function () {
+      document.body.classList.add("is-loaded");
+    });
+  }
+
+  function initHeaderScroll() {
+    var header = document.getElementById("site-header");
+    if (!header) return;
+    var threshold = 56;
+    function onScroll() {
+      var y = window.scrollY || document.documentElement.scrollTop;
+      if (y > threshold) {
+        header.classList.add("is-scrolled");
+      } else {
+        header.classList.remove("is-scrolled");
+      }
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  function initHeroParallax() {
+    var heroBg = document.querySelector(".hero--immersive .hero__bg");
+    if (!heroBg) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+
+    function onScroll() {
+      var y = window.scrollY || document.documentElement.scrollTop;
+      var offset = Math.min(y * 0.12, 48);
+      heroBg.style.transform = "scale(1.04) translate3d(0," + offset + "px,0)";
+    }
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  function initScrollPacing() {
+    var sections = document.querySelectorAll("#main .section");
+    if (!sections.length) return;
+
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            document.body.setAttribute("data-scene", entry.target.className);
+          }
+        });
+      },
+      { root: null, threshold: 0.38 }
+    );
+
+    sections.forEach(function (section) {
+      io.observe(section);
+    });
+  }
+
+  onReady(function () {
+    initMenu();
+    initHeaderScroll();
+    initHeroParallax();
+    initScrollPacing();
+    initPageTransitions();
+    initReveal();
+    initCollectionFilters();
+    initProductPage();
+    initContactForm();
+    markLoaded();
+  });
 })();
