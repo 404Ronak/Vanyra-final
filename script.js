@@ -1,6 +1,7 @@
 /* ============================================================
-   VANYRA — script.js
-   Collection filter + Product page + Contact form
+   VANYRA — script.js v3
+   Custom cursor · Parallax · Dust particles · Scroll progress
+   Collection filter · Product page · Contact form
    ============================================================ */
 
 (function () {
@@ -68,81 +69,160 @@
   });
 
   /* ----------------------------------------------------------
-     HEADER: scroll state
+     SCROLL PROGRESS BAR
+     ---------------------------------------------------------- */
+  const progressBar = document.querySelector(".scroll-progress");
+  function updateProgress() {
+    if (!progressBar) return;
+    const pct = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = pct > 0
+      ? (window.scrollY / pct * 100) + "%"
+      : "0%";
+  }
+
+  /* ----------------------------------------------------------
+     HEADER scroll state
      ---------------------------------------------------------- */
   const header = document.getElementById("site-header");
-  if (header) {
-    const onScroll = () => {
-      header.classList.toggle("is-scrolled", window.scrollY > 48);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+  function updateHeader() {
+    if (header) header.classList.toggle("is-scrolled", window.scrollY > 48);
+  }
+
+  /* ----------------------------------------------------------
+     PARALLAX HERO
+     ---------------------------------------------------------- */
+  const heroBg = document.querySelector(".hero__bg");
+  function updateParallax() {
+    if (!heroBg || window.scrollY >= window.innerHeight) return;
+    heroBg.style.transform = `translateY(${window.scrollY * 0.28}px) scale(1.06)`;
+  }
+
+  /* combined scroll */
+  window.addEventListener("scroll", () => {
+    updateProgress();
+    updateHeader();
+    updateParallax();
+  }, { passive: true });
+  updateProgress();
+  updateHeader();
+
+  /* ----------------------------------------------------------
+     CUSTOM CURSOR
+     ---------------------------------------------------------- */
+  if (window.matchMedia("(pointer: fine)").matches) {
+    const dot  = Object.assign(document.createElement("div"), { className: "cursor-dot"  });
+    const ring = Object.assign(document.createElement("div"), { className: "cursor-ring" });
+    document.body.append(dot, ring);
+
+    let mx = -100, my = -100, rx = -100, ry = -100;
+
+    document.addEventListener("mousemove", (e) => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + "px";
+      dot.style.top  = my + "px";
+    });
+
+    (function tick() {
+      rx += (mx - rx) * 0.14;
+      ry += (my - ry) * 0.14;
+      ring.style.left = rx + "px";
+      ring.style.top  = ry + "px";
+      requestAnimationFrame(tick);
+    })();
+
+    document.addEventListener("mouseleave", () => document.body.classList.add("cursor-hidden"));
+    document.addEventListener("mouseenter", () => document.body.classList.remove("cursor-hidden"));
   }
 
   /* ----------------------------------------------------------
      MENU TOGGLE
      ---------------------------------------------------------- */
-  const menuToggle = document.querySelector(".menu-toggle");
+  const menuToggle  = document.querySelector(".menu-toggle");
   const menuOverlay = document.getElementById("site-menu");
 
   if (menuToggle && menuOverlay) {
-    const openMenu = () => {
+    const isOpen  = () => menuToggle.getAttribute("aria-expanded") === "true";
+    const open    = () => {
       menuOverlay.hidden = false;
       menuToggle.setAttribute("aria-expanded", "true");
       document.body.style.overflow = "hidden";
-      // focus first link
-      const firstLink = menuOverlay.querySelector("a");
-      if (firstLink) setTimeout(() => firstLink.focus(), 50);
+      const first = menuOverlay.querySelector("a");
+      if (first) setTimeout(() => first.focus(), 60);
     };
-    const closeMenu = () => {
+    const close   = () => {
       menuOverlay.hidden = true;
       menuToggle.setAttribute("aria-expanded", "false");
       document.body.style.overflow = "";
     };
-    const isOpen = () => menuToggle.getAttribute("aria-expanded") === "true";
-
-    menuToggle.addEventListener("click", () => (isOpen() ? closeMenu() : openMenu()));
-
-    // Close on nav link click
-    menuOverlay.querySelectorAll("a").forEach((a) => {
-      a.addEventListener("click", closeMenu);
-    });
-
-    // Close on Escape
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && isOpen()) { closeMenu(); menuToggle.focus(); }
-    });
+    menuToggle.addEventListener("click", () => isOpen() ? close() : open());
+    menuOverlay.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && isOpen()) { close(); menuToggle.focus(); } });
   }
 
   /* ----------------------------------------------------------
-     SCROLL REVEAL
+     DUST PARTICLES
      ---------------------------------------------------------- */
-  const revealEls = document.querySelectorAll(".reveal");
-  if (revealEls.length && "IntersectionObserver" in window) {
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            obs.unobserve(entry.target);
-          }
-        });
-      },
+  const dustWrap = document.querySelector(".hero__dust");
+  if (dustWrap) {
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement("div");
+      p.className = "dust-particle";
+      const size = Math.random() * 2 + 1;
+      p.style.cssText = `
+        left:${Math.random()*100}%;
+        width:${size}px; height:${size}px;
+        animation-duration:${Math.random()*18+12}s;
+        animation-delay:${Math.random()*-24}s;
+        opacity:${Math.random()*0.5+0.15};
+      `;
+      dustWrap.appendChild(p);
+    }
+  }
+
+  /* ----------------------------------------------------------
+     INTERSECTION OBSERVER — reveal + outro + story
+     ---------------------------------------------------------- */
+  if ("IntersectionObserver" in window) {
+    // General reveal
+    new IntersectionObserver(
+      (entries, obs) => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add("is-visible"); obs.unobserve(e.target); }
+      }),
       { threshold: 0.1, rootMargin: "0px 0px -48px 0px" }
+    ).observe && document.querySelectorAll(".reveal").forEach(el =>
+      new IntersectionObserver(
+        ([e], obs) => { if (e.isIntersecting) { el.classList.add("is-visible"); obs.unobserve(el); } },
+        { threshold: 0.1, rootMargin: "0px 0px -48px 0px" }
+      ).observe(el)
     );
-    revealEls.forEach((el) => obs.observe(el));
+
+    // Outro
+    const outro = document.querySelector(".section--outro");
+    if (outro) new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) outro.classList.add("is-visible"); },
+      { threshold: 0.22 }
+    ).observe(outro);
+
+    // Story asymmetric shift
+    const storyMedia = document.querySelector(".story-split__media");
+    if (storyMedia) new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) storyMedia.classList.add("is-visible"); },
+      { threshold: 0.2 }
+    ).observe(storyMedia);
+
   } else {
-    revealEls.forEach((el) => el.classList.add("is-visible"));
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
+    const outro = document.querySelector(".section--outro");
+    if (outro) outro.classList.add("is-visible");
   }
 
   /* ----------------------------------------------------------
      PAGE TRANSITION
      ---------------------------------------------------------- */
-  document.querySelectorAll('a[href]').forEach((link) => {
+  document.querySelectorAll("a[href]").forEach(link => {
     const href = link.getAttribute("href");
-    // Only internal links, not anchors
     if (!href || href.startsWith("#") || href.startsWith("mailto") || href.startsWith("http")) return;
-    link.addEventListener("click", (e) => {
+    link.addEventListener("click", e => {
       e.preventDefault();
       document.body.classList.add("is-page-exit");
       setTimeout(() => { window.location.href = href; }, 360);
@@ -152,33 +232,23 @@
   /* ----------------------------------------------------------
      COLLECTION FILTER
      ---------------------------------------------------------- */
-  const filterBtns = document.querySelectorAll(".filter-btn");
+  const filterBtns      = document.querySelectorAll(".filter-btn");
   const collectionItems = document.querySelectorAll(".collection-item");
 
   if (filterBtns.length && collectionItems.length) {
-    filterBtns.forEach((btn) => {
+    filterBtns.forEach(btn => {
       btn.addEventListener("click", () => {
-        // Update active state
-        filterBtns.forEach((b) => {
-          b.classList.remove("is-active");
-          b.setAttribute("aria-selected", "false");
-        });
+        filterBtns.forEach(b => b.classList.remove("is-active"));
         btn.classList.add("is-active");
-        btn.setAttribute("aria-selected", "true");
-
         const filter = btn.dataset.filter;
-
-        collectionItems.forEach((item, i) => {
-          const shipMatch = item.dataset.ship === filter;
-          const catMatch  = item.dataset.cat  === filter;
-          const show      = filter === "all" || shipMatch || catMatch;
-
+        let vi = 0;
+        collectionItems.forEach(item => {
+          const show = filter === "all"
+            || item.dataset.ship === filter
+            || item.dataset.cat  === filter;
           if (show) {
             item.classList.remove("is-hidden");
-            // Stagger re-appearance
-            item.style.transitionDelay = `${i * 0.06}s`;
-            item.style.opacity  = "1";
-            item.style.transform = "none";
+            item.style.transitionDelay = `${vi++ * 0.07}s`;
           } else {
             item.classList.add("is-hidden");
             item.style.transitionDelay = "0s";
@@ -195,45 +265,32 @@
   const productMissing = document.getElementById("product-missing");
 
   if (productRoot) {
-    const params = new URLSearchParams(window.location.search);
-    const key    = params.get("p") || "";
-    const data   = PRODUCTS[key];
+    const key  = new URLSearchParams(window.location.search).get("p") || "";
+    const data = PRODUCTS[key];
+    const $    = id => document.getElementById(id);
 
     if (data) {
-      const img      = document.getElementById("product-image");
-      const nameEl   = document.getElementById("product-name");
-      const priceEl  = document.getElementById("product-price");
-      const shipEl   = document.getElementById("product-ship");
-      const storyEl  = document.getElementById("product-story");
-      const delivEl  = document.getElementById("product-delivery");
-      const bcName   = document.getElementById("product-bc-name");
-
-      if (img)     { img.src = data.image; img.alt = data.name; }
-      if (nameEl)  nameEl.textContent  = data.name;
-      if (priceEl) priceEl.textContent = data.price;
-      if (shipEl)  shipEl.textContent  = data.ship;
-      if (storyEl) storyEl.innerHTML   = data.story;
-      if (delivEl) delivEl.textContent = data.delivery;
-      if (bcName)  bcName.textContent  = data.name;
-
+      const img = $("product-image");
+      if (img) { img.src = data.image; img.alt = data.name; }
+      if ($("product-name"))     $("product-name").textContent     = data.name;
+      if ($("product-price"))    $("product-price").textContent    = data.price;
+      if ($("product-ship"))     $("product-ship").textContent     = data.ship;
+      if ($("product-story"))    $("product-story").innerHTML      = data.story;
+      if ($("product-delivery")) $("product-delivery").textContent = data.delivery;
+      if ($("product-bc-name"))  $("product-bc-name").textContent  = data.name;
       document.title = `${data.name} — VANYRA`;
-
       if (img) {
         img.onload = () => productRoot.classList.add("is-ready");
         if (img.complete) productRoot.classList.add("is-ready");
       }
-    } else {
-      productRoot.hidden = true;
-      if (productMissing) productMissing.hidden = false;
-    }
-
-    // Buy button
-    const buyBtn = document.getElementById("product-buy");
-    if (buyBtn && data) {
-      buyBtn.addEventListener("click", () => {
+      const buyBtn = $("product-buy");
+      if (buyBtn) buyBtn.addEventListener("click", () => {
         buyBtn.textContent = "Request sent ✓";
         buyBtn.disabled = true;
       });
+    } else {
+      productRoot.hidden = true;
+      if (productMissing) productMissing.hidden = false;
     }
   }
 
@@ -242,13 +299,11 @@
      ---------------------------------------------------------- */
   const form       = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
-
   if (form) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", e => {
       e.preventDefault();
       const btn = form.querySelector('[type="submit"]');
       if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
-      // Simulate async send
       setTimeout(() => {
         if (formStatus) {
           formStatus.textContent = "Message received. We will reply within two business days.";
