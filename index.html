@@ -11,9 +11,16 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="page-home">
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="page-transition" aria-hidden="true"></div>
 
+  <!-- ========================================================
+       HEADER
+  ========================================================= -->
   <header class="site-header" id="site-header">
     <a class="logo" href="index.html">VANYRA</a>
     <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-menu">
@@ -31,23 +38,27 @@
     </nav>
   </div>
 
+  <!-- ========================================================
+       MAIN
+  ========================================================= -->
   <main id="main">
-    <!-- ======================================================
-         HERO — Premium immersive
-    ======================================================= -->
+
+    <!-- ── 1. HERO ─────────────────────────────────────────── -->
     <section class="hero hero--immersive">
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__rays" aria-hidden="true"></div>
+      <div class="hero__dust" aria-hidden="true"></div>
       <div class="hero__rule" aria-hidden="true"></div>
 
       <div class="hero__inner">
-        <p class="hero__eyebrow">Dang, Gujarat · Est. 2022</p>
+        <p class="hero__eyebrow">Dang, Gujarat &nbsp;·&nbsp; Est. 2022</p>
         <h1 class="hero__title">Crafted by Nature.<br>Refined by Hand.</h1>
         <div class="hero__divider" aria-hidden="true"></div>
         <p class="hero__sub">Luxury handcrafted wood and bamboo objects, made slowly in the forests of Dang.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="collection.html">Explore Collection</a>
-          <a class="btn btn--ghost" href="about.html">Our Story</a>
+          <a class="btn btn--ghost"   href="about.html">Our Story</a>
         </div>
       </div>
 
@@ -57,21 +68,27 @@
       </div>
     </section>
 
-    <!-- ======================================================
-         STORY SPLIT
-    ======================================================= -->
+    <!-- ── 2. SILENT SECTION ────────────────────────────────── -->
+    <section class="section section--silent">
+      <div class="silent-block">
+        <span class="gold-rule reveal"></span>
+        <p class="silent-block__quote reveal">&ldquo;Nothing rushed.<br>Everything crafted.&rdquo;</p>
+        <p class="silent-block__attr reveal">VANYRA — Dang Studio</p>
+      </div>
+    </section>
+
+    <!-- ── 3. STORY SPLIT ───────────────────────────────────── -->
     <section class="section section--story-split">
       <div class="container story-split">
         <div class="story-split__media reveal">
           <img
             src="https://images.unsplash.com/photo-1448375240586-882f05218d64?w=1200&q=88"
             alt="Dense forest canopy — Dang region"
-            loading="lazy"
-            width="1200"
-            height="900"
+            loading="lazy" width="1200" height="900"
           />
         </div>
         <div class="story-split__content reveal">
+          <span class="section-num">01 — Origin</span>
           <p class="story-split__text">
             Born in the forests of Dang, VANYRA brings timeless craftsmanship to modern living.
           </p>
@@ -79,20 +96,20 @@
       </div>
     </section>
 
-    <!-- ======================================================
-         FEATURED PRODUCTS
-    ======================================================= -->
+    <!-- ── 4. FEATURED PRODUCTS ─────────────────────────────── -->
     <section class="section section--featured">
       <div class="container">
         <header class="section-head reveal">
+          <span class="section-num">02 — Collection</span>
           <h2>Featured</h2>
           <p class="muted">A quiet edit — each piece finished in our studio.</p>
         </header>
         <div class="product-grid">
-          <article class="product-card reveal">
+          <article class="product-card reveal" style="--i:0">
             <a class="product-card__link" href="product.html?p=forest-bowl">
               <div class="product-card__media">
-                <img src="https://images.unsplash.com/photo-1610701596007-11502849e13f?w=900&q=88" alt="Hand-turned wooden bowl" loading="lazy" width="900" height="1125" />
+                <img src="https://images.unsplash.com/photo-1610701596007-11502849e13f?w=900&q=88"
+                     alt="Hand-turned wooden bowl" loading="lazy" width="900" height="1125" />
                 <div class="product-card__overlay" aria-hidden="true">
                   <span class="product-card__overlay-name">Forest Bowl</span>
                 </div>
@@ -100,10 +117,11 @@
               <p class="product-card__meta">From ₹4,800 · Ready to Ship</p>
             </a>
           </article>
-          <article class="product-card reveal">
+          <article class="product-card reveal" style="--i:1">
             <a class="product-card__link" href="product.html?p=bamboo-tray">
               <div class="product-card__media">
-                <img src="https://images.unsplash.com/photo-1600585152220-90363fe27e38?w=900&q=88" alt="Handcrafted wooden tray" loading="lazy" width="900" height="1125" />
+                <img src="https://images.unsplash.com/photo-1600585152220-90363fe27e38?w=900&q=88"
+                     alt="Handcrafted wooden tray" loading="lazy" width="900" height="1125" />
                 <div class="product-card__overlay" aria-hidden="true">
                   <span class="product-card__overlay-name">Bamboo Tray</span>
                 </div>
@@ -111,10 +129,11 @@
               <p class="product-card__meta">From ₹3,200 · Made to Order</p>
             </a>
           </article>
-          <article class="product-card reveal">
+          <article class="product-card reveal" style="--i:2">
             <a class="product-card__link" href="product.html?p=river-spoon">
               <div class="product-card__media">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=88" alt="Carved wooden spoons" loading="lazy" width="900" height="1125" />
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=88"
+                     alt="Carved wooden spoons" loading="lazy" width="900" height="1125" />
                 <div class="product-card__overlay" aria-hidden="true">
                   <span class="product-card__overlay-name">River Spoon Set</span>
                 </div>
@@ -122,10 +141,11 @@
               <p class="product-card__meta">From ₹2,400 · Ready to Ship</p>
             </a>
           </article>
-          <article class="product-card reveal">
+          <article class="product-card reveal" style="--i:3">
             <a class="product-card__link" href="product.html?p=dusk-vessel">
               <div class="product-card__media">
-                <img src="https://images.unsplash.com/photo-1615876234884-f3139a52330b?w=900&q=88" alt="Tall wooden vessel" loading="lazy" width="900" height="1125" />
+                <img src="https://images.unsplash.com/photo-1615876234884-f3139a52330b?w=900&q=88"
+                     alt="Tall wooden vessel" loading="lazy" width="900" height="1125" />
                 <div class="product-card__overlay" aria-hidden="true">
                   <span class="product-card__overlay-name">Dusk Vessel</span>
                 </div>
@@ -140,46 +160,52 @@
       </div>
     </section>
 
-    <!-- ======================================================
-         CRAFT
-    ======================================================= -->
-    <section class="section section--craft">
-      <div class="container">
-        <div class="craft-block reveal">
-          <p class="craft-block__line">Select. Shape. Finish by hand.</p>
-          <p class="craft-block__line muted">No rush — only the pace the wood allows.</p>
+    <!-- ── 5. DARK BAND (dramatic contrast break) ────────────── -->
+    <section class="section section--dark-band">
+      <div class="container dark-band-inner">
+        <div class="reveal">
+          <span class="section-num">03 — Philosophy</span>
+          <h2 class="dark-band__heading">
+            Fewer objects.<br>
+            <em>Longer relationships.</em>
+          </h2>
         </div>
+        <p class="dark-band__body reveal">
+          If something leaves our bench, it should earn its place in your home. We make objects that age with you — not objects that age out of fashion.
+        </p>
       </div>
     </section>
 
-    <!-- ======================================================
-         TRUST
-    ======================================================= -->
-    <section class="section section--trust">
+    <!-- ── 6. TRUST ─────────────────────────────────────────── -->
+    <section class="section">
       <div class="container">
         <ul class="trust-list">
-          <li class="reveal">Materials traced to local forests and ethical harvest.</li>
-          <li class="reveal">Each object finished and inspected in our Dang studio.</li>
-          <li class="reveal">Packaging kept minimal — paper, cloth, no excess.</li>
+          <li class="reveal" style="--i:0">Materials traced to local forests and ethical harvest.</li>
+          <li class="reveal" style="--i:1">Each object finished and inspected in our Dang studio.</li>
+          <li class="reveal" style="--i:2">Packaging kept minimal — paper, cloth, no excess.</li>
         </ul>
       </div>
     </section>
 
-    <!-- ======================================================
-         CTA BAND
-    ======================================================= -->
-    <section class="section section--cta-band">
-      <div class="container narrow">
-        <div class="cta-band reveal">
-          <p class="cta-band__label">The collection</p>
-          <h2 class="cta-band__title">Discover craft</h2>
-          <p class="cta-band__lead muted">Objects for rooms that value silence and substance.</p>
+    <!-- ── 7. OUTRO (ending cinematic experience) ────────────── -->
+    <section class="section--outro" aria-label="Closing statement">
+      <div class="outro__bg" aria-hidden="true"></div>
+      <div class="outro__overlay" aria-hidden="true"></div>
+      <div class="outro__inner">
+        <span class="gold-rule outro__rule"></span>
+        <h2 class="outro__tagline">Discover craft</h2>
+        <p class="outro__sub">Objects for rooms that value silence and substance.</p>
+        <div class="outro__action">
           <a class="btn btn--primary" href="collection.html">Explore Collection</a>
         </div>
       </div>
     </section>
+
   </main>
 
+  <!-- ========================================================
+       FOOTER
+  ========================================================= -->
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-col footer-col--brand">
@@ -193,8 +219,18 @@
         <a href="contact.html">Contact</a>
       </nav>
       <div class="footer-social">
-        <a class="social-link" href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-        <a class="social-link" href="#" aria-label="Pinterest"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.07 0 11.32c0 4.52 2.44 8.44 6.27 10.05-.09-.79-.17-2.01.03-2.87.19-.82 1.23-5.2 1.23-5.2s-.31-.63-.31-1.56c0-1.46.85-2.55 1.9-2.55.9 0 1.33.67 1.33 1.48 0 .9-.57 2.25-.87 3.5-.25 1.05.53 1.91 1.57 1.91 1.88 0 3.33-1.98 3.33-4.84 0-2.53-1.82-4.3-4.42-4.3-3.01 0-4.77 2.26-4.77 4.59 0 .91.35 1.89.79 2.42.09.1.1.19.08.29-.08.32-.25 1.01-.29 1.15-.05.19-.15.23-.35.14-1.3-.6-2.11-2.49-2.11-4.01 0-3.26 2.37-6.26 6.82-6.26 3.58 0 6.36 2.55 6.36 5.96 0 3.55-2.24 6.41-5.35 6.41-1.05 0-2.04-.55-2.38-1.2l-.65 2.48c-.23.92-.86 2.08-1.28 2.79 1.96.6 4.03.93 6.19.93 6.63 0 12-5.07 12-11.32C24 5.07 18.63 0 12 0z"/></svg></a>
+        <a class="social-link" href="#" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4.5"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a class="social-link" href="#" aria-label="Pinterest">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.07 0 11.32c0 4.52 2.44 8.44 6.27 10.05-.09-.79-.17-2.01.03-2.87.19-.82 1.23-5.2 1.23-5.2s-.31-.63-.31-1.56c0-1.46.85-2.55 1.9-2.55.9 0 1.33.67 1.33 1.48 0 .9-.57 2.25-.87 3.5-.25 1.05.53 1.91 1.57 1.91 1.88 0 3.33-1.98 3.33-4.84 0-2.53-1.82-4.3-4.42-4.3-3.01 0-4.77 2.26-4.77 4.59 0 .91.35 1.89.79 2.42.09.1.1.19.08.29-.08.32-.25 1.01-.29 1.15-.05.19-.15.23-.35.14-1.3-.6-2.11-2.49-2.11-4.01 0-3.26 2.37-6.26 6.82-6.26 3.58 0 6.36 2.55 6.36 5.96 0 3.55-2.24 6.41-5.35 6.41-1.05 0-2.04-.55-2.38-1.2l-.65 2.48c-.23.92-.86 2.08-1.28 2.79 1.96.6 4.03.93 6.19.93 6.63 0 12-5.07 12-11.32C24 5.07 18.63 0 12 0z"/>
+          </svg>
+        </a>
       </div>
     </div>
   </footer>
