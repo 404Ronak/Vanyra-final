@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact VANYRA studio." />
+  <title>Contact — VANYRA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-contact">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-transition" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">VANYRA</a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-menu">
+      <span class="menu-toggle__label">Menu</span>
+      <span class="menu-toggle__icon" aria-hidden="true"></span>
+    </button>
+  </header>
+
+  <div id="site-menu" class="menu-overlay" hidden>
+    <nav class="menu-overlay__nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="collection.html">Collection</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <main id="main" class="main--pad">
+    <section class="page-hero page-hero--compact">
+      <div class="container narrow">
+        <p class="eyebrow reveal">Contact</p>
+        <h1 class="page-hero__title reveal">Write to us</h1>
+        <p class="page-hero__lead muted reveal">Commissions, availability, or a quiet hello — we read every message.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <form class="contact-form reveal" id="contact-form" action="#" method="get" novalidate>
+          <label class="field">
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="field">
+            <span>Message</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary btn--wide">Send message</button>
+          <p class="form-status small muted" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="logo logo--small">VANYRA</span>
+      <p class="muted small">Handcrafted in the Dang region.</p>
+    </div>
+  </footer>
+
+  <script src="ux.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
