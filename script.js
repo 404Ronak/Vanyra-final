@@ -8,7 +8,7 @@
       name: "Forest Bowl",
       price: "₹4,800",
       ship: "Ready to ship within 5–7 days.",
-      image: "https://images.unsplash.com/photo-1610701596007-11502849e13f?w=1200&q=85",
+      image: "https://images.unsplash.com/photo-1610701596007-11502849e13f?w=1400&q=88",
       imageAlt: "Hand-turned wooden bowl on a dark surface",
       story: [
         "You notice it first in still mornings — how the rim catches a thin line of light, like water paused at the edge of a leaf.",
@@ -21,7 +21,7 @@
       name: "Bamboo Tray",
       price: "₹3,200",
       ship: "Made to order — allow 3–4 weeks.",
-      image: "https://images.unsplash.com/photo-1600585152220-90363fe27e38?w=1200&q=85",
+      image: "https://images.unsplash.com/photo-1600585152220-90363fe27e38?w=1400&q=88",
       imageAlt: "Minimal wooden tray",
       story: [
         "Bamboo asks for patience. We follow its fibers instead of forcing symmetry — so each tray carries a slightly different song.",
@@ -34,7 +34,7 @@
       name: "River Spoon Set",
       price: "₹2,400",
       ship: "Ready to ship within 5–7 days.",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=88",
       imageAlt: "Hand-carved wooden spoons",
       story: [
         "Cool weight in the hand, edges softened by hours of sanding. These spoons belong to slow kitchens and unhurried meals.",
@@ -47,7 +47,7 @@
       name: "Dusk Vessel",
       price: "₹6,200",
       ship: "Made to order — allow 4–5 weeks.",
-      image: "https://images.unsplash.com/photo-1615876234884-f3139a52330b?w=1200&q=85",
+      image: "https://images.unsplash.com/photo-1615876234884-f3139a52330b?w=1400&q=88",
       imageAlt: "Tall wooden vessel",
       story: [
         "Height changes a room — this piece draws the eye upward without shouting. We leave the exterior almost untouched; the story is in the silhouette.",
@@ -60,7 +60,7 @@
       name: "Monsoon Board",
       price: "₹5,400",
       ship: "Ready to ship within 7–10 days.",
-      image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=85",
+      image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1400&q=88",
       imageAlt: "Large wooden serving board",
       story: [
         "Wide enough for bread, fruit, and hands reaching at once. Grain chosen for depth — you will find new lines each time you look.",
@@ -73,7 +73,7 @@
       name: "Amber Keepsake Box",
       price: "₹3,900",
       ship: "Made to order — allow 3 weeks.",
-      image: "https://images.unsplash.com/photo-1611485988300-b7530defb8e2?w=1200&q=85",
+      image: "https://images.unsplash.com/photo-1611485988300-b7530defb8e2?w=1400&q=88",
       imageAlt: "Wooden keepsake box",
       story: [
         "A small lid should close with intention — not a snap, but a soft certainty. Inside, space for what you do not want lost to noise.",
@@ -326,8 +326,25 @@
     });
   }
 
+  function initHeaderScroll() {
+    var header = document.getElementById("site-header");
+    if (!header) return;
+    var threshold = 56;
+    function onScroll() {
+      var y = window.scrollY || document.documentElement.scrollTop;
+      if (y > threshold) {
+        header.classList.add("is-scrolled");
+      } else {
+        header.classList.remove("is-scrolled");
+      }
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
   onReady(function () {
     initMenu();
+    initHeaderScroll();
     initPageTransitions();
     initReveal();
     initCollectionFilters();
