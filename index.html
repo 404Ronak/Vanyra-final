@@ -1,0 +1,2219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VANYRA — Premium handcrafted wooden and bamboo decor from the Dang region. Minimal, intentional objects made by artisan hands.">
+<meta name="keywords" content="handcrafted decor, wooden decor, bamboo decor, Dang, luxury home, artisan, India">
+<meta property="og:title" content="VANYRA — Handcrafted from the Forest">
+<meta property="og:description" content="Objects shaped by nature and human hands. Sourced from Dang, presented as luxury.">
+<meta property="og:type" content="website">
+<title>VANYRA — Handcrafted from the Forest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<!-- RAZORPAY CHECKOUT SCRIPT -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+:root {
+  --ink:         #0c0b09;
+  --ink-2:       #161410;
+  --ink-3:       #201d19;
+  --ink-4:       #2c2822;
+  --gold:        #c8a96e;
+  --gold-hi:     #dfc28e;
+  --gold-lo:     #8c7048;
+  --gold-ghost:  rgba(200,169,110,.08);
+  --cream:       #f2ece2;
+  --ivory:       #e8e0d3;
+  --fog:         #b4aca0;
+  --ash:         #7a7166;
+  --border:      rgba(200,169,110,.14);
+  --border-hi:   rgba(200,169,110,.32);
+  --radius:      2px;
+  --ease:        cubic-bezier(.16,1,.3,1);
+  --t-fast:      .35s var(--ease);
+  --t-med:       .55s var(--ease);
+  --t-slow:      .8s  var(--ease);
+  --max-w:       1360px;
+  --px:          clamp(24px, 5vw, 80px);
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display:block; width:100%; }
+button { cursor:pointer; font-family:inherit; }
+a { text-decoration:none; color:inherit; }
+ul { list-style:none; }
+input, textarea { font-family:inherit; }
+.t-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .45em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.t-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -.01em;
+}
+.t-body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--fog);
+  font-size: 14.5px;
+}
+.t-serif-italic {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--px);
+}
+.section-wrap { padding: clamp(80px,10vw,140px) var(--px); }
+.rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-hi), transparent);
+  margin: 0 var(--px);
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
+}
+.reveal.in { opacity:1; transform:translateY(0); }
+.reveal-d1 { transition-delay:.1s; }
+.reveal-d2 { transition-delay:.2s; }
+.reveal-d3 { transition-delay:.3s; }
+.reveal-d4 { transition-delay:.4s; }
+.reveal-d5 { transition-delay:.5s; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius);
+  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+.btn:active { transform: scale(.98); }
+.btn-gold {
+  background: var(--gold);
+  color: var(--ink);
+  padding: 16px 36px;
+}
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold-hi);
+  opacity: 0;
+  transition: opacity var(--t-fast);
+}
+.btn-gold:hover::after { opacity: 1; }
+.btn-gold span { position: relative; z-index:1; }
+.btn-gold-lg {
+  padding: 19px 44px;
+  font-size: 12px;
+}
+.btn-outline {
+  background: transparent;
+  color: var(--cream);
+  padding: 15px 32px;
+  border: 1px solid var(--border-hi);
+}
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--fog);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  font-size: 10px;
+  letter-spacing: .3em;
+  gap: 10px;
+}
+.btn-ghost:hover { color: var(--cream); border-color: var(--gold-lo); }
+.btn-full { width: 100%; }
+.btn-arrow::after {
+  content: '→';
+  font-size: 14px;
+  letter-spacing: 0;
+  transition: transform var(--t-fast);
+}
+.btn-arrow:hover::after { transform: translateX(4px); }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+}
+.badge-ship { background: rgba(200,169,110,.12); color: var(--gold); border: 1px solid var(--border); }
+.badge-order { background: rgba(255,255,255,.04); color: var(--fog); border: 1px solid rgba(255,255,255,.08); }
+.badge-low {
+  background: rgba(180,60,40,.15);
+  color: #e07060;
+  border: 1px solid rgba(180,60,40,.25);
+}
+.cart-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-med);
+}
+.cart-backdrop.open { opacity:1; pointer-events:all; }
+.cart-sidebar {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(420px, 92vw);
+  background: var(--ink-2);
+  border-left: 1px solid var(--border);
+  z-index: 2001;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform var(--t-slow);
+}
+.cart-sidebar.open { transform: translateX(0); }
+.cart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--border);
+}
+.cart-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: .06em;
+}
+.cart-close {
+  background: none;
+  border: none;
+  color: var(--fog);
+  font-size: 22px;
+  line-height: 1;
+  transition: color var(--t-fast);
+  cursor: pointer;
+}
+.cart-close:hover { color: var(--cream); }
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 32px;
+}
+.cart-items::-webkit-scrollbar { width: 3px; }
+.cart-items::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 2px; }
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  gap: 16px;
+}
+.cart-empty-icon {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  color: var(--gold-ghost);
+  line-height: 1;
+}
+.cart-empty p {
+  font-size: 13px;
+  color: var(--ash);
+  letter-spacing: .06em;
+}
+.cart-item {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 16px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cart-item-img {
+  width: 72px;
+  height: 90px;
+  background: var(--ink-3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cart-item-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+.cart-item-price { font-size: 13px; color: var(--gold); margin-bottom: 12px; }
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cart-qty button {
+  width: 26px;
+  height: 26px;
+  background: var(--ink-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--cream);
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--t-fast);
+}
+.cart-qty button:hover { border-color: var(--gold-lo); }
+.cart-qty span { font-size: 13px; min-width: 16px; text-align: center; }
+.cart-remove {
+  background: none;
+  border: none;
+  color: var(--ash);
+  font-size: 18px;
+  padding: 4px;
+  line-height: 1;
+  transition: color var(--t-fast);
+  cursor: pointer;
+  margin-top: 2px;
+}
+.cart-remove:hover { color: #e07060; }
+.cart-foot {
+  padding: 24px 32px 32px;
+  border-top: 1px solid var(--border);
+}
+.cart-subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.cart-subtotal span:first-child { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--ash); }
+.cart-subtotal span:last-child { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--gold); }
+.cart-shipping-note {
+  font-size: 11px;
+  color: var(--ash);
+  letter-spacing: .03em;
+  text-align: center;
+  margin-top: 12px;
+}
+.nav-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--px);
+  height: 72px;
+  background: rgba(12,11,9,.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--t-med);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: .42em;
+  color: var(--cream);
+  text-transform: uppercase;
+}
+.nav-logo em { color: var(--gold); font-style:normal; }
+.nav-links {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--fog);
+  transition: color var(--t-fast);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width var(--t-fast);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.cart-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--cream);
+  padding: 9px 18px;
+  border-radius: var(--radius);
+  font-size: 10px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  transition: border-color var(--t-fast), color var(--t-fast);
+}
+.cart-btn:hover { border-color: var(--gold-lo); color: var(--gold); }
+.cart-count {
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 9px;
+  font-weight: 500;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+.cart-count.visible { display:flex; }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  height: 1px;
+  background: var(--cream);
+  transition: width var(--t-fast);
+}
+.hamburger span:nth-child(1) { width: 24px; }
+.hamburger span:nth-child(2) { width: 16px; }
+.hamburger span:nth-child(3) { width: 24px; }
+.hamburger:hover span { width: 24px; }
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--ink);
+  z-index: 950;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s var(--ease);
+}
+.menu-overlay.open { opacity:1; pointer-events:all; }
+.menu-close {
+  position: absolute;
+  top: 24px;
+  right: var(--px);
+  background: none;
+  border: none;
+  color: var(--fog);
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  transition: color var(--t-fast);
+}
+.menu-close:hover { color: var(--gold); }
+.menu-nav-links { text-align: center; }
+.menu-nav-links li { overflow: hidden; margin-bottom: 4px; }
+.menu-nav-links a {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(44px, 8vw, 80px);
+  line-height: 1.15;
+  color: var(--cream);
+  transform: translateY(100%);
+  transition: transform .65s var(--ease), color .35s;
+}
+.menu-overlay.open .menu-nav-links a { transform: translateY(0); }
+.menu-nav-links li:nth-child(1) a { transition-delay:.08s; }
+.menu-nav-links li:nth-child(2) a { transition-delay:.15s; }
+.menu-nav-links li:nth-child(3) a { transition-delay:.22s; }
+.menu-nav-links li:nth-child(4) a { transition-delay:.29s; }
+.menu-nav-links li:nth-child(5) a { transition-delay:.36s; }
+.menu-nav-links a:hover { color: var(--gold); }
+.menu-divider {
+  width: 1px;
+  height: 0;
+  background: var(--border-hi);
+  margin: 40px auto;
+  transition: height .7s var(--ease) .4s;
+}
+.menu-overlay.open .menu-divider { height: 64px; }
+.menu-sub {
+  font-size: 11px;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--ash);
+  opacity: 0;
+  transition: opacity .5s .55s;
+}
+.menu-overlay.open .menu-sub { opacity:1; }
+.hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  position: relative;
+  overflow: hidden;
+  padding-top: 72px;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at 75% 25%, rgba(200,169,110,.05) 0%, transparent 55%),
+    linear-gradient(168deg, #0c0b09 0%, #161410 45%, #201d19 80%, #0c0b09 100%);
+}
+.hero-bg::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:
+    repeating-linear-gradient(96deg, transparent, transparent 60px, rgba(200,169,110,.012) 60px, rgba(200,169,110,.012) 61px),
+    repeating-linear-gradient(98deg, transparent, transparent 90px, rgba(200,169,110,.008) 90px, rgba(200,169,110,.008) 91px);
+}
+.hero-bg::after {
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:240px;
+  background: linear-gradient(to top, var(--ink) 0%, transparent 100%);
+}
+.hero-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--px) 80px;
+  max-width: 820px;
+}
+.hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: revealUp .9s var(--ease) .3s forwards;
+}
+.hero-kicker::before {
+  content:'';
+  width:32px;
+  height:1px;
+  background: var(--gold);
+}
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(56px,8.5vw,112px);
+  line-height: 1.0;
+  color: var(--cream);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: revealUp 1s var(--ease) .5s forwards;
+}
+.hero-h1 em {
+  font-style: italic;
+  color: var(--gold-hi);
+}
+.hero-p {
+  font-size: clamp(15px,1.4vw,18px);
+  line-height: 1.75;
+  color: var(--fog);
+  max-width: 500px;
+  margin-bottom: 48px;
+  font-weight: 300;
+  opacity: 0;
+  animation: revealUp .9s var(--ease) .75s forwards;
+}
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  opacity: 0;
+  animation: revealUp .8s var(--ease) .95s forwards;
+}
+.hero-social-proof {
+  position: relative;
+  z-index: 2;
+  padding: 24px var(--px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 48px;
+  overflow-x: auto;
+}
+.hero-social-proof::-webkit-scrollbar { display:none; }
+.proof-item { flex-shrink:0; }
+.proof-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.proof-label {
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 120px;
+  right: var(--px);
+  z-index:3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: fadeIn .8s ease 1.6s forwards;
+}
+.scroll-hint span {
+  font-size: 8.5px;
+  letter-spacing: .45em;
+  text-transform: uppercase;
+  color: var(--ash);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--gold-lo), transparent);
+  animation: scrollAnim 2.2s ease-in-out infinite 2s;
+}
+@keyframes scrollAnim {
+  0%,100%{opacity:.4;transform:scaleY(1);transform-origin:top}
+  50%{opacity:1;transform:scaleY(.5);transform-origin:top}
+}
+@keyframes revealUp {
+  to { opacity:1; transform:translateY(0); }
+  from { opacity:0; transform:translateY(24px); }
+}
+@keyframes fadeIn {
+  to { opacity:1; }
+}
+.announce {
+  background: var(--gold);
+  color: var(--ink);
+  text-align: center;
+  padding: 10px var(--px);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+}
+.collection-section { background: var(--ink-2); }
+.collection-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+.collection-title {
+  font-size: clamp(38px,4.5vw,60px);
+  color: var(--cream);
+}
+.filters {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 9px 22px;
+  background: none;
+  border: 1px solid transparent;
+  color: var(--ash);
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: all var(--t-fast);
+}
+.filter-btn.active, .filter-btn:hover {
+  border-color: var(--border-hi);
+  color: var(--gold);
+}
+.filter-btn.active { background: var(--gold-ghost); }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+@media(max-width:900px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width:580px) { .products-grid { grid-template-columns: 1fr; } }
+.product-card {
+  background: var(--ink-3);
+  overflow: hidden;
+  position: relative;
+  transition: background var(--t-fast);
+}
+.product-card:hover { background: var(--ink-4); }
+.product-card[data-hidden] { display:none; }
+.prod-img-wrap {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--ink-4);
+}
+.prod-img-canvas {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .7s var(--ease);
+}
+.product-card:hover .prod-img-canvas { transform: scale(1.04); }
+.prod-img-canvas.p1 {
+  background:
+    radial-gradient(circle 140px at 50% 55%, rgba(160,120,60,.18) 0%, transparent 70%),
+    repeating-linear-gradient(88deg,transparent,transparent 4px,rgba(180,140,70,.015) 4px,rgba(180,140,70,.015) 5px),
+    linear-gradient(170deg,#1e1a14,#2a2318,#1a1610);
+}
+.prod-img-canvas.p2 {
+  background:
+    radial-gradient(ellipse 120px 200px at 50% 45%, rgba(140,110,50,.14) 0%, transparent 75%),
+    repeating-linear-gradient(2deg,transparent,transparent 6px,rgba(160,130,60,.012) 6px,rgba(160,130,60,.012) 7px),
+    linear-gradient(155deg,#1c1914,#26211b,#181410);
+}
+.prod-img-canvas.p3 {
+  background:
+    radial-gradient(circle 100px at 48% 50%, rgba(150,115,55,.2) 0%, transparent 65%),
+    repeating-linear-gradient(91deg,transparent,transparent 3px,rgba(170,135,65,.018) 3px,rgba(170,135,65,.018) 4px),
+    linear-gradient(145deg,#20191280,#2c241a,#1a1510);
+}
+.prod-img-canvas.p4 {
+  background:
+    radial-gradient(ellipse 160px 90px at 50% 52%, rgba(140,105,45,.16) 0%, transparent 70%),
+    repeating-linear-gradient(89deg,transparent,transparent 5px,rgba(160,125,55,.013) 5px,rgba(160,125,55,.013) 6px),
+    linear-gradient(160deg,#1e1c14,#28221a,#18150e);
+}
+.prod-img-canvas.p5 {
+  background:
+    radial-gradient(circle 80px at 50% 50%, rgba(155,120,58,.22) 0%, transparent 60%),
+    repeating-linear-gradient(93deg,transparent,transparent 7px,rgba(175,140,65,.014) 7px,rgba(175,140,65,.014) 8px),
+    linear-gradient(150deg,#1d1a12,#272019,#161310);
+}
+.prod-img-canvas.p6 {
+  background:
+    radial-gradient(ellipse 130px 170px at 50% 48%, rgba(145,110,50,.17) 0%, transparent 72%),
+    repeating-linear-gradient(87deg,transparent,transparent 4px,rgba(165,130,60,.016) 4px,rgba(165,130,60,.016) 5px),
+    linear-gradient(162deg,#1f1c13,#2b231b,#19150f);
+}
+.prod-icon {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 96px;
+  line-height: 1;
+  color: rgba(200,169,110,.1);
+  user-select: none;
+  position: relative;
+  z-index: 1;
+  transition: color .6s var(--ease), transform .7s var(--ease);
+}
+.product-card:hover .prod-icon { color: rgba(200,169,110,.18); transform: scale(1.05); }
+.prod-badges {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}
+.prod-wishlist {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  background: rgba(12,11,9,.55);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: var(--fog);
+  backdrop-filter: blur(6px);
+  transition: all var(--t-fast);
+  opacity: 0;
+  transform: translateY(-4px);
+}
+.product-card:hover .prod-wishlist { opacity:1; transform:translateY(0); }
+.prod-wishlist:hover { border-color: var(--gold); color: var(--gold); }
+.prod-quick {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  padding: 14px;
+  background: linear-gradient(to top, rgba(12,11,9,.95), rgba(12,11,9,.65), transparent);
+  transform: translateY(100%);
+  transition: transform var(--t-med);
+  z-index: 3;
+}
+.product-card:hover .prod-quick { transform: translateY(0); }
+.prod-info {
+  padding: 24px 22px 28px;
+}
+.prod-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 6px;
+  letter-spacing: .02em;
+}
+.prod-desc {
+  font-size: 12.5px;
+  color: var(--ash);
+  margin-bottom: 14px;
+  letter-spacing: .02em;
+  line-height: 1.6;
+}
+.prod-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.prod-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--gold);
+}
+.prod-price small {
+  font-size: 11px;
+  color: var(--ash);
+  font-family: 'DM Sans', sans-serif;
+  margin-left: 4px;
+}
+.prod-stock {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: #e07060;
+}
+.modal-backdrop {
+  position: fixed;
+  inset:0;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(6px);
+  z-index: 3000;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity var(--t-med);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--px);
+}
+.modal-backdrop.open { opacity:1; pointer-events:all; }
+.modal-box {
+  background: var(--ink-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 960px;
+  max-height: 90svh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  transform: scale(.96) translateY(12px);
+  transition: transform var(--t-med);
+}
+.modal-backdrop.open .modal-box { transform:scale(1) translateY(0); }
+.modal-box::-webkit-scrollbar { width:3px; }
+.modal-box::-webkit-scrollbar-thumb { background: var(--border); border-radius:2px; }
+@media(max-width:720px) { .modal-box { grid-template-columns:1fr; } }
+.modal-gallery {
+  position: relative;
+  background: var(--ink-4);
+  display: flex;
+  flex-direction: column;
+}
+.modal-main-img {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 160px;
+  color: rgba(200,169,110,.1);
+  background: var(--ink-3);
+  position: relative;
+  overflow: hidden;
+}
+.modal-thumbs {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  background: var(--ink-4);
+}
+.modal-thumb {
+  width: 60px;
+  height: 60px;
+  background: var(--ink-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: rgba(200,169,110,.3);
+  font-family: 'Cormorant Garamond', serif;
+  transition: border-color var(--t-fast);
+  overflow: hidden;
+}
+.modal-thumb.active, .modal-thumb:hover { border-color: var(--gold); }
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 4;
+  background: rgba(12,11,9,.7);
+  border: 1px solid var(--border);
+  color: var(--fog);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  transition: all var(--t-fast);
+  cursor: pointer;
+}
+.modal-close:hover { color: var(--cream); border-color: var(--gold-lo); }
+.modal-content {
+  padding: 40px 36px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.modal-content::-webkit-scrollbar { width: 3px; }
+.modal-content::-webkit-scrollbar-thumb { background: var(--border); }
+.modal-kicker { margin-bottom: 12px; }
+.modal-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.modal-tagline {
+  font-size: 13px;
+  color: var(--ash);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.modal-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.modal-availability {
+  font-size: 11px;
+  color: #e07060;
+  letter-spacing: .2em;
+  margin-bottom: 28px;
+}
+.modal-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+.modal-story {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--fog);
+  margin-bottom: 24px;
+}
+.modal-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  margin-bottom: 28px;
+}
+.spec-label {
+  font-size: 9.5px;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--ash);
+  margin-bottom: 4px;
+}
+.spec-val {
+  font-size: 13.5px;
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+}
+.modal-delivery {
+  background: var(--gold-ghost);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.modal-delivery-icon { font-size: 20px; margin-top: 1px; }
+.modal-delivery-title { font-size: 12px; font-weight: 400; color: var(--cream); margin-bottom: 3px; }
+.modal-delivery-body { font-size: 11.5px; color: var(--fog); line-height: 1.6; }
+.modal-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+.story-section {
+  background: var(--ink);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media(max-width:900px){ .story-section { grid-template-columns:1fr; } }
+.story-visual {
+  position: relative;
+  order: 2;
+}
+@media(max-width:900px){ .story-visual { order:1; } }
+.story-img-frame {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: var(--ink-3);
+  overflow: hidden;
+}
+.story-img-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(87deg,transparent,transparent 3px,rgba(200,169,110,.014) 3px,rgba(200,169,110,.014) 4px),
+    repeating-linear-gradient(2deg,transparent,transparent 15px,rgba(200,169,110,.008) 15px,rgba(200,169,110,.008) 16px),
+    linear-gradient(155deg,#201d14,#2c261c,#1a1710);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 140px;
+  color: rgba(200,169,110,.06);
+}
+.story-corner {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-color: var(--gold-lo);
+  border-style: solid;
+}
+.story-corner-tl { top: -12px; left: -12px; border-width: 1px 0 0 1px; }
+.story-corner-br { bottom: -12px; right: -12px; border-width: 0 1px 1px 0; }
+.story-text { order:1; }
+@media(max-width:900px){ .story-text { order:2; } }
+.story-kicker { margin-bottom: 28px; }
+.story-h2 {
+  font-size: clamp(36px,4vw,54px);
+  color: var(--cream);
+  margin-bottom: 28px;
+  line-height: 1.1;
+}
+.story-lead {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(20px,2.2vw,26px);
+  color: var(--ivory);
+  line-height: 1.5;
+  margin-bottom: 28px;
+}
+.story-body {
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--fog);
+  margin-bottom: 16px;
+}
+.story-pillars {
+  display: flex;
+  gap: 24px;
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border);
+}
+.pillar-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.pillar-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--cream);
+  letter-spacing: .08em;
+  margin-bottom: 4px;
+}
+.pillar-body { font-size: 12px; color: var(--ash); line-height: 1.6; }
+.artisan-section {
+  background: var(--ink-2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 560px;
+}
+@media(max-width:900px){ .artisan-section { grid-template-columns:1fr; } }
+.artisan-visual {
+  background:
+    repeating-linear-gradient(90deg,transparent,transparent 5px,rgba(200,169,110,.014) 5px,rgba(200,169,110,.014) 6px),
+    linear-gradient(165deg,#1c1914,#28221a,#1a1610);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+.artisan-portrait {
+  width: 200px;
+  height: 260px;
+  background: linear-gradient(170deg, rgba(200,169,110,.06) 0%, transparent 100%);
+  border: 1px solid var(--border-hi);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  color: rgba(200,169,110,.15);
+  position: relative;
+}
+.artisan-portrait::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: 8px;
+  bottom: 8px;
+  border: 1px solid var(--border);
+  z-index: -1;
+}
+.artisan-text {
+  padding: 80px clamp(32px,5vw,80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.artisan-kicker { margin-bottom: 24px; }
+.artisan-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px,4vw,48px);
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.artisan-title { font-size: 11px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:24px; }
+.artisan-bio { font-size:14.5px; line-height:1.85; color:var(--fog); margin-bottom:16px; }
+.artisan-origin {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  letter-spacing: .15em;
+  color: var(--ash);
+}
+.artisan-origin::before { content: '◈'; color: var(--gold); font-size: 14px; }
+.process-section { background: var(--ink); }
+.process-h2 {
+  font-size: clamp(36px,4vw,56px);
+  color: var(--cream);
+  margin-bottom: 64px;
+  max-width: 600px;
+}
+.process-track {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+}
+@media(max-width:720px){ .process-track { grid-template-columns:1fr; } }
+.process-card {
+  background: var(--ink-2);
+  padding: 48px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: background var(--t-fast);
+}
+.process-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-med);
+}
+.process-card:hover { background: var(--ink-3); }
+.process-card:hover::after { transform: scaleX(1); }
+.process-step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 300;
+  color: rgba(200,169,110,.08);
+  line-height: 1;
+  margin-bottom: 28px;
+  transition: color var(--t-med);
+}
+.process-card:hover .process-step-num { color: rgba(200,169,110,.16); }
+.process-step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.process-step-body { font-size: 13.5px; line-height: 1.8; color: var(--ash); }
+.testimonials-section { background: var(--ink-2); }
+.testimonials-h2 {
+  font-size: clamp(34px,4vw,52px);
+  color: var(--cream);
+  margin-bottom: 56px;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+}
+@media(max-width:900px){ .testimonials-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:580px){ .testimonials-grid { grid-template-columns:1fr; } }
+.testimonial-card {
+  background: var(--ink-3);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+}
+.testimonial-stars { color: var(--gold); font-size: 12px; letter-spacing: 3px; margin-bottom: 20px; }
+.testimonial-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ivory);
+  margin-bottom: 24px;
+  flex:1;
+}
+.testimonial-author { border-top: 1px solid var(--border); padding-top: 20px; }
+.testimonial-name { font-size: 13px; font-weight: 400; color: var(--cream); margin-bottom: 3px; }
+.testimonial-loc { font-size: 11px; color: var(--ash); letter-spacing:.1em; }
+.trust-bar {
+  background: var(--ink);
+  padding: 60px var(--px);
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 2px;
+}
+@media(max-width:900px){ .trust-bar { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:480px){ .trust-bar { grid-template-columns:1fr; } }
+.trust-item {
+  background: var(--ink-2);
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.trust-icon { font-size: 22px; color: var(--gold); }
+.trust-label { font-size: 13.5px; font-weight: 400; color: var(--cream); font-family: 'Cormorant Garamond', serif; }
+.trust-desc { font-size: 12px; color: var(--ash); line-height: 1.6; }
+.contact-section {
+  background: var(--ink-2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+@media(max-width:900px){ .contact-section { grid-template-columns:1fr; gap:56px; } }
+.contact-h2 { font-size: clamp(36px,4vw,54px); color: var(--cream); margin-bottom: 20px; }
+.contact-p { font-size:14.5px; line-height:1.85; color:var(--fog); margin-bottom:36px; max-width:380px; }
+.contact-meta { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+.contact-meta-item { display: flex; align-items: center; gap: 14px; }
+.contact-meta-icon {
+  width: 40px; height: 40px;
+  background: var(--gold-ghost);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.contact-meta-label { font-size: 9.5px; letter-spacing:.35em; text-transform:uppercase; color:var(--ash); }
+.contact-meta-value { font-size: 14px; color: var(--cream); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.form-grid .span-2 { grid-column: 1/-1; }
+.field {
+  background: var(--ink-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color var(--t-fast);
+}
+.field:focus-within { border-color: var(--gold-lo); }
+.field input, .field textarea, .field select {
+  width: 100%; padding: 18px 20px;
+  background: transparent; border: none;
+  color: var(--cream); font-size: 14px;
+  outline: none; font-weight: 300;
+  font-family: 'DM Sans', sans-serif;
+}
+.field textarea { height: 120px; resize: none; display: block; }
+.field input::placeholder, .field textarea::placeholder { color: var(--ash); font-size: 12px; letter-spacing:.04em; }
+.field select option { background: var(--ink-3); }
+footer {
+  background: var(--ink);
+  border-top: 1px solid var(--border);
+  padding: 56px var(--px) 32px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+@media(max-width:900px){ .footer-top { grid-template-columns:1fr 1fr; } }
+@media(max-width:480px){ .footer-top { grid-template-columns:1fr; } }
+.footer-brand-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500; font-size: 22px;
+  letter-spacing: .4em; text-transform: uppercase;
+  color: var(--cream); margin-bottom: 16px;
+}
+.footer-brand-logo em { color: var(--gold); font-style:normal; }
+.footer-brand-tagline { font-size: 12.5px; color: var(--ash); line-height: 1.7; max-width: 240px; }
+.footer-col-title {
+  font-size: 9.5px; letter-spacing: .38em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 20px; font-weight: 400;
+}
+.footer-col-links { display:flex; flex-direction:column; gap:12px; }
+.footer-col-links a { font-size: 13px; color: var(--ash); transition: color var(--t-fast); }
+.footer-col-links a:hover { color: var(--cream); }
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.footer-copy { font-size: 11px; color: var(--ash); letter-spacing:.08em; }
+.footer-legal { display:flex; gap:24px; }
+.footer-legal a { font-size:11px; color:var(--ash); transition:color var(--t-fast); }
+.footer-legal a:hover { color:var(--cream); }
+.toast {
+  position: fixed;
+  bottom: 32px; left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--ink-3);
+  border: 1px solid var(--border-hi);
+  border-left: 3px solid var(--gold);
+  color: var(--cream);
+  padding: 14px 24px;
+  font-size: 13px;
+  z-index: 5000;
+  opacity: 0;
+  transition: opacity .35s, transform .35s;
+  white-space: nowrap;
+  border-radius: var(--radius);
+  pointer-events: none;
+}
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+@media(max-width:860px) {
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+}
+</style>
+</head>
+<body>
+
+<div class="announce">Free shipping on orders above ₹3,000 · Handcrafted in Dang, India</div>
+
+<div class="cart-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
+<aside class="cart-sidebar" id="cartSidebar">
+  <div class="cart-head">
+    <h2>Your Selection</h2>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <div class="cart-empty-icon">◈</div>
+      <p>Your cart is empty</p>
+    </div>
+  </div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span id="cartTotal">₹ 0</span>
+    </div>
+    <button class="btn btn-gold btn-full btn-gold-lg" id="checkoutBtn" onclick="checkout()">
+      <span>Proceed to Checkout</span>
+    </button>
+    <p class="cart-shipping-note">Secure checkout · Handcrafted with care · Easy returns</p>
+  </div>
+</aside>
+
+<div class="menu-overlay" id="menuOverlay">
+  <button class="menu-close" onclick="closeMenu()">Close ✕</button>
+  <nav>
+    <ul class="menu-nav-links">
+      <li><a href="#hero" onclick="closeMenu()">Home</a></li>
+      <li><a href="#collection" onclick="closeMenu()">Collection</a></li>
+      <li><a href="#story" onclick="closeMenu()">Our Story</a></li>
+      <li><a href="#artisan" onclick="closeMenu()">The Artisan</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+    <div class="menu-divider"></div>
+    <p class="menu-sub">Dang Region · Handcrafted · Limited Pieces</p>
+  </nav>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" onclick="handleModalClick(event)">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-gallery">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-main-img" id="modalMainImg"></div>
+      <div class="modal-thumbs" id="modalThumbs"></div>
+    </div>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+
+<header class="nav-bar" role="banner">
+  <a href="#hero" class="nav-logo">VAN<em>Y</em>RA</a>
+  <nav role="navigation" aria-label="Main navigation">
+    <ul class="nav-links">
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#artisan">Artisan</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="openCart()" aria-label="Open cart">
+      <span>Cart</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <button class="hamburger" onclick="openMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+  <div class="hero-body">
+    <div class="hero-kicker">
+      <span class="t-label">Dang Region · Est. MMXXIV</span>
+    </div>
+    <h1 class="hero-h1">Handcrafted<br>from the <em>Forest</em></h1>
+    <p class="hero-p">Objects born in the forests of Dang — shaped by artisan hands over generations, offered to homes that value what is real.</p>
+    <div class="hero-ctas">
+      <a href="#collection" class="btn btn-gold btn-gold-lg btn-arrow"><span>Explore Collection</span></a>
+      <a href="#story" class="btn btn-ghost btn-arrow">Our Story</a>
+    </div>
+  </div>
+  <div class="hero-social-proof" role="complementary">
+    <div class="proof-item reveal"><div class="proof-num">48+</div><div class="proof-label">Objects Crafted</div></div>
+    <div class="proof-item reveal reveal-d1"><div class="proof-num">100%</div><div class="proof-label">Handmade</div></div>
+    <div class="proof-item reveal reveal-d2"><div class="proof-num">Dang</div><div class="proof-label">Origin Region</div></div>
+    <div class="proof-item reveal reveal-d3"><div class="proof-num">5–10</div><div class="proof-label">Days to Craft</div></div>
+  </div>
+</section>
+
+<section class="collection-section section-wrap" id="collection" aria-label="Collection">
+  <div class="collection-head reveal">
+    <div>
+      <p class="t-label" style="margin-bottom:16px">The Collection</p>
+      <h2 class="t-display collection-title">Selected Objects</h2>
+    </div>
+    <div class="filters" role="group" aria-label="Filter products">
+      <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+      <button class="filter-btn" onclick="filterProducts('ship', this)">Ready to Ship</button>
+      <button class="filter-btn" onclick="filterProducts('order', this)">Made to Order</button>
+      <button class="filter-btn" onclick="filterProducts('decor', this)">Decor</button>
+    </div>
+  </div>
+  <div class="products-grid" id="productsGrid">
+    <article class="product-card reveal" data-filter="ship decor" data-id="1">
+      <div class="prod-img-wrap">
+        <div class="prod-img-canvas p1"><div class="prod-icon">木</div></div>
+        <div class="prod-badges">
+          <span class="badge badge-ship">Ready to Ship</span>
+          <span class="badge badge-low">Only 3 Left</span>
+        </div>
+        <button class="prod-wishlist" aria-label="Save to wishlist">♡</button>
+        <div class="prod-quick"><button class="btn btn-gold btn-full" onclick="openModal(1)"><span>Quick View</span></button></div>
+      </div>
+      <div class="prod-info">
+        <h3 class="prod-name">Dang Bowl No. 1</h3>
+        <p class="prod-desc">Turned from solid teak, grain preserved intact</p>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 2,400<small>incl. tax</small></div>
+          <span class="prod-stock">3 left</span>
+        </div>
+      </div>
+    </article>
+    <article class="product-card reveal reveal-d1" data-filter="order decor" data-id="2">
+      <div class="prod-img-wrap">
+        <div class="prod-img-canvas p2"><div class="prod-icon">⬡</div></div>
+        <div class="prod-badges"><span class="badge badge-order">Made to Order</span></div>
+        <button class="prod-wishlist" aria-label="Save to wishlist">♡</button>
+        <div class="prod-quick"><button class="btn btn-gold btn-full" onclick="openModal(2)"><span>Quick View</span></button></div>
+      </div>
+      <div class="prod-info">
+        <h3 class="prod-name">Bamboo Panel</h3>
+        <p class="prod-desc">Hand-woven, each piece structurally unique</p>
+        <div class="prod-footer"><div class="prod-price">₹ 1,800<small>incl. tax</small></div></div>
+      </div>
+    </article>
+    <article class="product-card reveal reveal-d2" data-filter="ship decor" data-id="3">
+      <div class="prod-img-wrap">
+        <div class="prod-img-canvas p3"><div class="prod-icon">◉</div></div>
+        <div class="prod-badges">
+          <span class="badge badge-ship">Ready to Ship</span>
+          <span class="badge badge-low">Only 2 Left</span>
+        </div>
+        <button class="prod-wishlist" aria-label="Save to wishlist">♡</button>
+        <div class="prod-quick"><button class="btn btn-gold btn-full" onclick="openModal(3)"><span>Quick View</span></button></div>
+      </div>
+      <div class="prod-info">
+        <h3 class="prod-name">Forest Vase</h3>
+        <p class="prod-desc">Raw finish, natural imperfections kept</p>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 3,100<small>incl. tax</small></div>
+          <span class="prod-stock">2 left</span>
+        </div>
+      </div>
+    </article>
+    <article class="product-card reveal" data-filter="order decor" data-id="4">
+      <div class="prod-img-wrap">
+        <div class="prod-img-canvas p4"><div class="prod-icon">▬</div></div>
+        <div class="prod-badges"><span class="badge badge-order">Made to Order</span></div>
+        <button class="prod-wishlist" aria-label="Save to wishlist">♡</button>
+        <div class="prod-quick"><button class="btn btn-gold btn-full" onclick="openModal(4)"><span>Quick View</span></button></div>
+      </div>
+      <div class="prod-info">
+        <h3 class="prod-name">Carved Tray</h3>
+        <p class="prod-desc">Wide, shallow form — shaped for stillness</p>
+        <div class="prod-footer"><div class="prod-price">₹ 2,800<small>incl. tax</small></div></div>
+      </div>
+    </article>
+    <article class="product-card reveal reveal-d1" data-filter="ship decor" data-id="5">
+      <div class="prod-img-wrap">
+        <div class="prod-img-canvas p5"><div class="prod-icon">◈</div></div>
+        <div class="prod-badges"><span class="badge badge-ship">Ready to Ship</span></div>
+        <button class="prod-wishlist" aria-label="Save to wishlist">♡</button>
+        <div class="prod-quick"><button class="btn btn-gold btn-full" onclick="openModal(5)"><span>Quick View</span></button></div>
+      </div>
+      <div class="prod-info">
+        <h3 class="prod-name">Stem Holder</h3>
+        <p class="prod-desc">Single bloom elevated by turned wood</p>
+        <div class="prod-footer"><div class="prod-price">₹ 1,400<small>incl. tax</small></div></div>
+      </div>
+    </article>
+    <article class="product-card reveal reveal-d2" data-filter="order decor" data-id="6">
+      <div class="prod-img-wrap">
+        <div class="prod-img-canvas p6"><div class="prod-icon">◇</div></div>
+        <div class="prod-badges">
+          <span class="badge badge-order">Made to Order</span>
+          <span class="badge badge-low">4 Remaining</span>
+        </div>
+        <button class="prod-wishlist" aria-label="Save to wishlist">♡</button>
+        <div class="prod-quick"><button class="btn btn-gold btn-full" onclick="openModal(6)"><span>Quick View</span></button></div>
+      </div>
+      <div class="prod-info">
+        <h3 class="prod-name">Ritual Box</h3>
+        <p class="prod-desc">Hinged, smooth-lined, crafted in two days</p>
+        <div class="prod-footer">
+          <div class="prod-price">₹ 3,600<small>incl. tax</small></div>
+          <span class="prod-stock">4 left</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="story-section section-wrap" id="story" aria-label="Brand story">
+  <div class="story-text">
+    <div class="story-kicker reveal"><p class="t-label">The Story</p></div>
+    <h2 class="t-display story-h2 reveal reveal-d1">Born from the forests<br>of <em style="font-style:italic;color:var(--gold-hi)">Dang</em></h2>
+    <p class="story-lead reveal reveal-d2">In the eastern reaches of Gujarat, where the Sahyadri range meets dense teak forest, the district of Dang has been home to woodcraft for centuries.</p>
+    <p class="story-body reveal reveal-d2">VANYRA is not a marketplace. It is a deliberate effort to find the finest objects made by the hands of Dang artisans — people who have shaped wood and bamboo their entire lives — and offer them to homes that understand the value of what is real.</p>
+    <p class="story-body reveal reveal-d3">Every piece carries the fingerprints of its maker. The slight unevenness in a bowl's rim. The way the grain runs across a tray's face. These are not flaws — they are proof of something that no machine can reproduce.</p>
+    <div class="story-pillars reveal reveal-d4">
+      <div class="story-pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-label">Source Directly</div>
+        <div class="pillar-body">No middlemen. We travel to Dang and select with our own hands.</div>
+      </div>
+      <div class="story-pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-label">Fewer, Better</div>
+        <div class="pillar-body">We never overstock. Scarcity is not a strategy — it is the nature of handcraft.</div>
+      </div>
+      <div class="story-pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-label">Honest Objects</div>
+        <div class="pillar-body">No embellishment. No exaggeration. The material speaks for itself.</div>
+      </div>
+    </div>
+  </div>
+  <div class="story-visual reveal reveal-d2">
+    <div class="story-img-frame">
+      <div class="story-img-inner" aria-hidden="true">竹</div>
+    </div>
+    <div class="story-corner story-corner-tl" aria-hidden="true"></div>
+    <div class="story-corner story-corner-br" aria-hidden="true"></div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="artisan-section" id="artisan" aria-label="Meet the artisan">
+  <div class="artisan-visual reveal">
+    <div class="artisan-portrait" aria-label="Artisan portrait placeholder">人</div>
+  </div>
+  <div class="artisan-text">
+    <div class="artisan-kicker reveal"><p class="t-label">The Maker</p></div>
+    <h2 class="artisan-name reveal reveal-d1">Shankar Bhai Vasava</h2>
+    <p class="artisan-title reveal reveal-d1">Master Woodworker · Dang District, Gujarat</p>
+    <p class="artisan-bio reveal reveal-d2">Shankar has been shaping teak and bamboo since he was twelve years old, learning at his father's workshop in a village without a proper road. He does not use a lathe. He does not sand with machines. Every piece he makes takes at least two days — and it shows.</p>
+    <p class="artisan-bio reveal reveal-d3">He describes his process simply: <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--ivory)">"The wood already knows what it wants to be. I just help it get there."</em></p>
+    <div class="artisan-origin reveal reveal-d3">Sourced directly from Ahwa, Dang District · Gujarat, India</div>
+    <a href="#collection" class="btn btn-outline btn-arrow reveal reveal-d4" style="margin-top:32px; display:inline-flex;"><span>Shop His Work</span></a>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="process-section section-wrap" id="process" aria-label="Our process">
+  <div>
+    <p class="t-label reveal" style="margin-bottom:16px">The Craft</p>
+    <h2 class="t-display process-h2 reveal reveal-d1">Made by hand.<br>No shortcuts.</h2>
+  </div>
+  <div class="process-track">
+    <div class="process-card reveal">
+      <div class="process-step-num">I</div>
+      <h3 class="process-step-title">Material Selection</h3>
+      <p class="process-step-body">Wood and bamboo are chosen for grain, weight, and character. We reject pieces that don't meet a simple standard: would we keep this ourselves?</p>
+    </div>
+    <div class="process-card reveal reveal-d1">
+      <div class="process-step-num">II</div>
+      <h3 class="process-step-title">Hand Shaping</h3>
+      <p class="process-step-body">The form follows the material. Artisans work with the grain, never against it — coaxing shape rather than forcing it. This takes time. That is the point.</p>
+    </div>
+    <div class="process-card reveal reveal-d2">
+      <div class="process-step-num">III</div>
+      <h3 class="process-step-title">Natural Finishing</h3>
+      <p class="process-step-body">A single coat of cold-pressed linseed oil. Nothing synthetic. Nothing that masks the wood — only what deepens and preserves what is already there.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<section class="testimonials-section section-wrap" aria-label="Customer reviews">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:56px">
+    <div>
+      <p class="t-label reveal" style="margin-bottom:16px">What People Say</p>
+      <h2 class="t-display testimonials-h2 reveal reveal-d1" style="margin-bottom:0">Real voices,<br>real homes</h2>
+    </div>
+    <div class="reveal reveal-d2" style="display:flex;align-items:center;gap:8px">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--gold)">4.9</span>
+      <div>
+        <div style="color:var(--gold);font-size:12px;letter-spacing:3px">★★★★★</div>
+        <div style="font-size:11px;color:var(--ash)">from 38 verified orders</div>
+      </div>
+    </div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"The bowl arrived and I just held it for a few minutes. You can feel every decision the artisan made. Nothing about it is accidental."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-name">Priya Mehta</div>
+        <div class="testimonial-loc">Mumbai · Dang Bowl No. 1</div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-d1">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"I've bought from a dozen 'artisan' brands. VANYRA is the first one that actually feels like what it says it is. The tray is on my desk every day."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-name">Rohan Desai</div>
+        <div class="testimonial-loc">Bangalore · Carved Tray</div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-d2">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"Gifted the ritual box to my mother. She keeps her evening things in it. She asked me where I got something this beautiful. That was the right question."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-name">Anjali Shah</div>
+        <div class="testimonial-loc">Ahmedabad · Ritual Box</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar" role="complementary" aria-label="Why VANYRA">
+  <div class="trust-item reveal">
+    <div class="trust-icon">✦</div>
+    <div class="trust-label">Truly Handcrafted</div>
+    <div class="trust-desc">No machines. No factories. Each piece is made by one artisan, start to finish.</div>
+  </div>
+  <div class="trust-item reveal reveal-d1">
+    <div class="trust-icon">◈</div>
+    <div class="trust-label">Limited Supply</div>
+    <div class="trust-desc">We never overproduce. When a piece is gone, it's gone — no reprints.</div>
+  </div>
+  <div class="trust-item reveal reveal-d2">
+    <div class="trust-icon">❧</div>
+    <div class="trust-label">Direct from Dang</div>
+    <div class="trust-desc">Sourced in person. No middlemen. The artisan receives fairly.</div>
+  </div>
+  <div class="trust-item reveal reveal-d3">
+    <div class="trust-icon">↩</div>
+    <div class="trust-label">Easy Returns</div>
+    <div class="trust-desc">If it isn't right for your home, return it within 7 days, no questions.</div>
+  </div>
+</div>
+
+<section class="contact-section section-wrap" id="contact" aria-label="Contact">
+  <div>
+    <p class="t-label reveal" style="margin-bottom:20px">Get in Touch</p>
+    <h2 class="t-display contact-h2 reveal reveal-d1">Let's begin a<br><em class="t-serif-italic" style="color:var(--gold-hi)">conversation</em></h2>
+    <p class="contact-p reveal reveal-d2">Custom orders, inquiries, or simply want to know more about the craft — we welcome all of it. Responses within 24 hours.</p>
+    <div class="contact-meta reveal reveal-d3">
+      <div class="contact-meta-item">
+        <div class="contact-meta-icon">◎</div>
+        <div class="contact-meta-text">
+          <div class="contact-meta-label">Instagram</div>
+          <div class="contact-meta-value">@vanyra.official</div>
+        </div>
+      </div>
+      <div class="contact-meta-item">
+        <div class="contact-meta-icon">✉</div>
+        <div class="contact-meta-text">
+          <div class="contact-meta-label">Email</div>
+          <div class="contact-meta-value">hello@vanyra.in</div>
+        </div>
+      </div>
+      <div class="contact-meta-item">
+        <div class="contact-meta-icon">◷</div>
+        <div class="contact-meta-text">
+          <div class="contact-meta-label">Response Time</div>
+          <div class="contact-meta-value">Within 24 hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="reveal reveal-d2">
+    <div class="form-grid">
+      <div class="field"><input type="text" placeholder="Your Name" autocomplete="name"></div>
+      <div class="field"><input type="email" placeholder="Email Address" autocomplete="email"></div>
+      <div class="field span-2">
+        <select>
+          <option value="" disabled selected>What's this about?</option>
+          <option>I'd like to order something</option>
+          <option>Custom / made-to-order inquiry</option>
+          <option>Question about a product</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field span-2"><textarea placeholder="Your message..."></textarea></div>
+    </div>
+    <button class="btn btn-gold btn-full btn-gold-lg btn-arrow" style="margin-top:2px" onclick="submitForm()">
+      <span>Send Message</span>
+    </button>
+    <p style="font-size:11px;color:var(--ash);margin-top:14px;letter-spacing:.04em">We read every message personally. No auto-replies.</p>
+  </div>
+</section>
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-logo">Van<em>y</em>ra</div>
+      <p class="footer-brand-tagline">Premium handcrafted objects from the forests of Dang, Gujarat.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Navigate</p>
+      <ul class="footer-col-links">
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#artisan">The Artisan</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Shop</p>
+      <ul class="footer-col-links">
+        <li><a href="#collection">Wooden Decor</a></li>
+        <li><a href="#collection">Bamboo Decor</a></li>
+        <li><a href="#collection">Ready to Ship</a></li>
+        <li><a href="#collection">Made to Order</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Connect</p>
+      <ul class="footer-col-links">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">hello@vanyra.in</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2024 VANYRA · Dang, Gujarat · All Rights Reserved</p>
+    <div class="footer-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<script>
+/* ============================================================
+   PRODUCT DATA
+   ============================================================ */
+const PRODUCTS = {
+  1: {
+    name: 'Dang Bowl No. 1', tagline: 'Turned from solid teak — the grain runs deep.',
+    price: 2400, badge: 'ship', badgeLabel: 'Ready to Ship', stock: 3, icon: '木', bg: 'p1',
+    story: 'This bowl was shaped on a hand-held lathe in Shankar\'s workshop over the course of two afternoons. The teak came from a fallen tree — nothing was cut for this piece. The grain you see running across the interior is exactly as the wood grew. No stain, no fill. Just teak and time.',
+    specs: { Material: 'Solid Teak', Finish: 'Cold-pressed linseed oil', Dimensions: '18 cm × 8 cm', Weight: 'Approx. 320g', Origin: 'Dang District, Gujarat' },
+    delivery: { type: 'ship', label: 'Ships within 2–3 business days', note: 'Packed in recycled kraft paper and newspaper. No plastic.' }
+  },
+  2: {
+    name: 'Bamboo Panel', tagline: 'Woven by hand, structurally unrepeatable.',
+    price: 1800, badge: 'order', badgeLabel: 'Made to Order', stock: null, icon: '⬡', bg: 'p2',
+    story: 'Bamboo weaving in Dang has its own geometry — one that no machine has ever successfully replicated. This panel is woven from split bamboo strips by a single artisan. The pattern emerges from the maker\'s hands, not from a template. Each one looks slightly different. That is not a flaw.',
+    specs: { Material: 'Split bamboo', Finish: 'Natural, uncoated', Dimensions: '30 cm × 40 cm', Weight: 'Approx. 180g', Origin: 'Dang District, Gujarat' },
+    delivery: { type: 'order', label: 'Made to order in 5–10 days', note: 'We will message you when your piece is in progress.' }
+  },
+  3: {
+    name: 'Forest Vase', tagline: 'Raw finish. Natural marks kept deliberately.',
+    price: 3100, badge: 'ship', badgeLabel: 'Ready to Ship', stock: 2, icon: '◉', bg: 'p3',
+    story: 'The Forest Vase was shaped from a piece of seasoned bamboo that had a small natural split running along one face. Most makers would discard it. We kept it. That split — sealed naturally by the drying process — is now the piece\'s most distinctive feature. It holds a single dried stem.',
+    specs: { Material: 'Seasoned bamboo', Finish: 'Natural oil', Dimensions: '8 cm × 28 cm (H)', Weight: 'Approx. 210g', Origin: 'Dang District, Gujarat' },
+    delivery: { type: 'ship', label: 'Ships within 2–3 business days', note: 'Ships in a handmade cloth bag.' }
+  },
+  4: {
+    name: 'Carved Tray', tagline: 'Wide, shallow, shaped for stillness.',
+    price: 2800, badge: 'order', badgeLabel: 'Made to Order', stock: null, icon: '▬', bg: 'p4',
+    story: 'A tray for the objects you keep returning to — a candle, a stone, your reading glasses. The form is deliberately wide and low, so nothing on it feels crowded. The carved edges took three hours. You won\'t see that time, but you\'ll feel the weight of it when you hold the piece.',
+    specs: { Material: 'Indian rosewood', Finish: 'Beeswax and linseed', Dimensions: '38 cm × 22 cm × 4 cm (H)', Weight: 'Approx. 580g', Origin: 'Dang District, Gujarat' },
+    delivery: { type: 'order', label: 'Made to order in 7–10 days', note: 'Custom dimensions available on request.' }
+  },
+  5: {
+    name: 'Stem Holder', tagline: 'One dried bloom, elevated by turned wood.',
+    price: 1400, badge: 'ship', badgeLabel: 'Ready to Ship', stock: 8, icon: '◈', bg: 'p5',
+    story: 'Small objects deserve the same attention as large ones. This stem holder was turned from a single cylinder of teak. The opening is sized for a single dried stem — pampas, eucalyptus, palm. It stands 14 centimetres and weighs enough to feel deliberate in your hand.',
+    specs: { Material: 'Solid Teak', Finish: 'Natural oil', Dimensions: '7 cm × 14 cm (H)', Weight: 'Approx. 160g', Origin: 'Dang District, Gujarat' },
+    delivery: { type: 'ship', label: 'Ships within 2–3 business days', note: 'Ideal as a gift — comes in a kraft paper wrap.' }
+  },
+  6: {
+    name: 'Ritual Box', tagline: 'Hinged, smooth-lined, made across two full days.',
+    price: 3600, badge: 'order', badgeLabel: 'Made to Order', stock: 4, icon: '◇', bg: 'p6',
+    story: 'This is the most complex piece we carry. The hinges are hand-fitted — no standard hardware — and the interior is lined with unbleached cotton. It is made for the things you want to keep carefully: a letter, a bracelet, a small photograph. It holds them well.',
+    specs: { Material: 'Indian rosewood, cotton lining', Finish: 'Beeswax', Dimensions: '20 cm × 13 cm × 8 cm (H)', Weight: 'Approx. 440g', Origin: 'Dang District, Gujarat' },
+    delivery: { type: 'order', label: 'Made to order in 8–10 days', note: 'Personalised engraving available — contact us.' }
+  }
+};
+
+/* ============================================================
+   CART STATE
+   ============================================================ */
+let cart = [];
+function getCartCount(){ return cart.reduce((s,i)=>s+i.qty,0); }
+function getCartTotal(){ return cart.reduce((s,i)=>s+i.price*i.qty,0); }
+
+function updateCartUI(){
+  const count = getCartCount();
+  const countEl = document.getElementById('cartCount');
+  countEl.textContent = count;
+  count > 0 ? countEl.classList.add('visible') : countEl.classList.remove('visible');
+  const itemsEl = document.getElementById('cartItems');
+  const emptyEl = document.getElementById('cartEmpty');
+  const footEl  = document.getElementById('cartFoot');
+  const totalEl = document.getElementById('cartTotal');
+  if(cart.length === 0){
+    emptyEl.style.display = 'flex';
+    footEl.style.display  = 'none';
+    itemsEl.innerHTML = '';
+    itemsEl.appendChild(emptyEl);
+    return;
+  }
+  emptyEl.style.display = 'none';
+  footEl.style.display  = 'block';
+  totalEl.textContent   = '₹ ' + getCartTotal().toLocaleString('en-IN');
+  const existing = itemsEl.querySelectorAll('.cart-item');
+  existing.forEach(e=>e.remove());
+  cart.forEach(item=>{
+    const p  = PRODUCTS[item.id];
+    const el = document.createElement('div');
+    el.className = 'cart-item';
+    el.innerHTML = `
+      <div class="cart-item-img">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:rgba(200,169,110,.2)">${p.icon}</div>
+      </div>
+      <div>
+        <div class="cart-item-name">${p.name}</div>
+        <div class="cart-item-price">₹ ${p.price.toLocaleString('en-IN')}</div>
+        <div class="cart-qty">
+          <button onclick="changeQty(${item.id},-1)">−</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty(${item.id},1)">+</button>
+        </div>
+      </div>
+      <button class="cart-remove" onclick="removeFromCart(${item.id})" aria-label="Remove ${p.name}">✕</button>
+    `;
+    itemsEl.insertBefore(el, emptyEl);
+  });
+}
+
+function addToCart(id){
+  const existing = cart.find(i=>i.id===id);
+  if(existing){ existing.qty++; }
+  else { cart.push({id, qty:1, price:PRODUCTS[id].price}); }
+  updateCartUI();
+  showToast(`${PRODUCTS[id].name} added to cart`);
+}
+function removeFromCart(id){ cart = cart.filter(i=>i.id!==id); updateCartUI(); }
+function changeQty(id, delta){
+  const item = cart.find(i=>i.id===id);
+  if(!item) return;
+  item.qty = Math.max(1, item.qty + delta);
+  updateCartUI();
+}
+function openCart(){
+  document.getElementById('cartSidebar').classList.add('open');
+  document.getElementById('cartBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart(){
+  document.getElementById('cartSidebar').classList.remove('open');
+  document.getElementById('cartBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ============================================================
+   RAZORPAY CHECKOUT
+   ============================================================ */
+async function checkout(){
+  if(cart.length === 0) return;
+
+  const btn = document.getElementById('checkoutBtn');
+  btn.innerHTML = '<span>Processing...</span>';
+  btn.disabled  = true;
+
+  const totalAmount = getCartTotal(); // in rupees
+
+  try {
+    // Step 1: Create order on backend
+    const orderRes = await fetch('/api/create-order', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({
+        amount:  totalAmount,
+        currency:'INR',
+        receipt: `vanyra_${Date.now()}`
+      })
+    });
+
+    if(!orderRes.ok) throw new Error('Could not create order');
+    const order = await orderRes.json();
+
+    // Step 2: Open Razorpay modal
+    const options = {
+      key:         'rzp_test_SqNNT7ES9WDrGJ', // Key ID only — safe for frontend
+      amount:      order.amount,
+      currency:    order.currency,
+      name:        'VANYRA',
+      description: 'Handcrafted Objects from Dang',
+      order_id:    order.order_id,
+      theme:       { color: '#c8a96e' },
+      prefill:     { name: '', email: '', contact: '' },
+
+      handler: async function(response){
+        // Step 3: Verify payment on backend
+        try {
+          const verifyRes = await fetch('/api/verify-payment', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({
+              razorpay_order_id:   response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature:  response.razorpay_signature
+            })
+          });
+          const result = await verifyRes.json();
+          if(result.success){
+            cart = [];
+            updateCartUI();
+            closeCart();
+            showToast('Payment successful! Thank you for your order ◈');
+          } else {
+            showToast('Payment verification failed. Contact us if amount was deducted.');
+          }
+        } catch(e){
+          showToast('Verification error. Please contact us.');
+        }
+      },
+
+      modal: {
+        ondismiss: function(){
+          btn.innerHTML = '<span>Proceed to Checkout</span>';
+          btn.disabled  = false;
+          showToast('Payment cancelled.');
+        }
+      }
+    };
+
+    const rzp = new Razorpay(options);
+
+    rzp.on('payment.failed', function(response){
+      btn.innerHTML = '<span>Proceed to Checkout</span>';
+      btn.disabled  = false;
+      showToast('Payment failed: ' + (response.error.description || 'Please try again.'));
+    });
+
+    rzp.open();
+
+  } catch(err){
+    console.error(err);
+    showToast('Something went wrong. Please try again.');
+    btn.innerHTML = '<span>Proceed to Checkout</span>';
+    btn.disabled  = false;
+  }
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+function openModal(id){
+  const p = PRODUCTS[id];
+  const backdrop  = document.getElementById('modalBackdrop');
+  const mainImg   = document.getElementById('modalMainImg');
+  const thumbs    = document.getElementById('modalThumbs');
+  const content   = document.getElementById('modalContent');
+  mainImg.style.background = '';
+  mainImg.className = 'modal-main-img ' + p.bg;
+  mainImg.innerHTML = `<div style="font-family:'Cormorant Garamond',serif;font-size:160px;color:rgba(200,169,110,.08);user-select:none;position:relative;z-index:1">${p.icon}</div>`;
+  thumbs.innerHTML = ['◭','△','◈','◇'].map((sym,i)=>`
+    <div class="modal-thumb ${i===0?'active':''}" onclick="selectThumb(this,${id},'${sym}')">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:${i===0?28:20}px;color:rgba(200,169,110,.2)">${i===0?p.icon:sym}</span>
+    </div>
+  `).join('');
+  const specHtml = Object.entries(p.specs).map(([k,v])=>`
+    <div class="spec-item">
+      <div class="spec-label">${k}</div>
+      <div class="spec-val">${v}</div>
+    </div>
+  `).join('');
+  const delivIcon = p.delivery.type === 'ship' ? '🚚' : '🛠';
+  const stockHtml = p.stock && p.stock <= 4
+    ? `<div class="modal-availability">Only ${p.stock} remaining</div>`
+    : (p.badge==='order' ? `<div class="modal-availability" style="color:var(--fog)">Made to order — 5–10 days</div>` : '');
+  content.innerHTML = `
+    <div class="modal-kicker"><span class="badge badge-${p.badge}">${p.badgeLabel}</span></div>
+    <h2 class="modal-name">${p.name}</h2>
+    <p class="modal-tagline">${p.tagline}</p>
+    <div class="modal-price">₹ ${p.price.toLocaleString('en-IN')}<span style="font-size:13px;color:var(--ash);font-family:'DM Sans',sans-serif;margin-left:6px">incl. tax</span></div>
+    ${stockHtml}
+    <div class="modal-divider"></div>
+    <p class="modal-story">${p.story}</p>
+    <div class="modal-specs">${specHtml}</div>
+    <div class="modal-delivery">
+      <div class="modal-delivery-icon">${delivIcon}</div>
+      <div class="modal-delivery-text">
+        <div class="modal-delivery-title">${p.delivery.label}</div>
+        <div class="modal-delivery-body">${p.delivery.note}</div>
+      </div>
+    </div>
+    <div class="modal-ctas">
+      <button class="btn btn-gold btn-full btn-gold-lg" onclick="addToCart(${id});closeModal()"><span>Add to Cart</span></button>
+      <button class="btn btn-outline btn-full" onclick="addToCart(${id});closeModal();openCart()"><span>Buy Now</span></button>
+    </div>
+  `;
+  backdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function selectThumb(el, id, sym){
+  document.querySelectorAll('.modal-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  const p = PRODUCTS[id];
+  const mainImg = document.getElementById('modalMainImg');
+  const icon = el.querySelector('span').textContent;
+  mainImg.querySelector('div').textContent = icon;
+}
+function closeModal(){
+  document.getElementById('modalBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleModalClick(e){
+  if(e.target === document.getElementById('modalBackdrop')) closeModal();
+}
+
+/* ============================================================
+   MENU
+   ============================================================ */
+function openMenu(){
+  document.getElementById('menuOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu(){
+  document.getElementById('menuOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ============================================================
+   FILTERS
+   ============================================================ */
+function filterProducts(filter, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.product-card').forEach(card=>{
+    const tags = card.dataset.filter || '';
+    if(filter === 'all' || tags.includes(filter)){
+      card.removeAttribute('data-hidden');
+      card.style.display = '';
+    } else {
+      card.setAttribute('data-hidden','');
+      card.style.display = 'none';
+    }
+  });
+}
+
+/* ============================================================
+   WISHLIST
+   ============================================================ */
+document.querySelectorAll('.prod-wishlist').forEach(btn=>{
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(this.dataset.saved){
+      this.textContent = '♡';
+      this.style.color = '';
+      delete this.dataset.saved;
+    } else {
+      this.textContent = '♥';
+      this.style.color = 'var(--gold)';
+      this.dataset.saved = '1';
+      showToast('Saved to wishlist');
+    }
+  });
+});
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+function submitForm(){ showToast('Message received — we\'ll reply within 24 hours.'); }
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+let toastTimer;
+function showToast(msg){
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>toast.classList.remove('show'), 3200);
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+const revealObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in'); revealObs.unobserve(e.target); }
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+/* ============================================================
+   KEYBOARD ESCAPE
+   ============================================================ */
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){ closeModal(); closeCart(); closeMenu(); }
+});
+</script>
+</body>
+</html>
